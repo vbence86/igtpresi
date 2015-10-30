@@ -1,0 +1,6 @@
+{
+	"projectName": "Touch_MillionFlaxScratchCard",
+	"dependencies": {
+		"Touch_Scratchomatic": "feature/single-game-deploy"
+	}
+}

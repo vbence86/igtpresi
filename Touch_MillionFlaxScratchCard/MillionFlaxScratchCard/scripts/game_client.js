@@ -1,0 +1,1 @@
+!function(a){var b=a.DefaultClient.extend({});a.Client=new b(a.clientOptions)}(pgc.Game);

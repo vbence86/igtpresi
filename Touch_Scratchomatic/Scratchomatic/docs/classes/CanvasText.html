@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CanvasText - Scratchomatic</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+
+<script>var Frames = window.Frames || {}</script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="Scratchomatic" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/CanvasText.html">CanvasText</a></li>
+                                <li><a href="../classes/CanvasToolkit.html">CanvasToolkit</a></li>
+                                <li><a href="../classes/EasingFunctions.html">EasingFunctions</a></li>
+                                <li><a href="../classes/Point.html">Point</a></li>
+                                <li><a href="../classes/ScratchAnimationTriggers.html">ScratchAnimationTriggers</a></li>
+                                <li><a href="../classes/ScratchBrushTypes.html">ScratchBrushTypes</a></li>
+                                <li><a href="../classes/ScratchController.html">ScratchController</a></li>
+                                <li><a href="../classes/ScratchGameTypes.html">ScratchGameTypes</a></li>
+                                <li><a href="../classes/ScratchMask.html">ScratchMask</a></li>
+                                <li><a href="../classes/Symbol.html">Symbol</a></li>
+                                <li><a href="../classes/SymbolGroup.html">SymbolGroup</a></li>
+                                <li><a href="../classes/SymbolZIndices.html">SymbolZIndices</a></li>
+                                <li><a href="../classes/TimeLine.html">TimeLine</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/CanvasText.html">CanvasText</a></li>
+                                <li><a href="../modules/CanvasToolkit.html">CanvasToolkit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>CanvasText Class</h1>
+<div class="box meta">
+
+
+        <div class="foundat">
+            Defined in: <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l1"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:1</code></a>
+        </div>
+
+            Module: <a href="../modules/CanvasText.html">CanvasText</a>
+
+</div>
+
+
+<div class="box intro">
+    <p>Describes a factory object that writes formatted text to an offscreen canvas element using fillText.</p>
+<ul>
+<li>Can then be used as an image source for an Actor or written directly to an onscreen canvas element.</li>
+<li>Gives a performance improvement over using fillText every frame.</li>
+<li>Includes functions for font preload detection.</li>
+</ul>
+
+</div>
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_CanvasText" class="method item">
+            <h3 class="name"><code>CanvasText</code></h3>
+        
+                <div class="args">
+                    <span class="paren">(</span><ul class="args-list inline commas">
+                        <li class="arg">
+                                <code>config</code>
+                        </li>
+                    </ul><span class="paren">)</span>
+                </div>
+        
+        
+        
+        
+        
+        
+        
+        
+            <div class="meta">
+                        <p>
+                        Defined in
+                <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l1"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:1</code></a>
+                </p>
+        
+        
+        
+            </div>
+        
+            <div class="description">
+                
+            </div>
+        
+                <div class="params">
+                    <h4>Parameters:</h4>
+        
+                    <ul class="params-list">
+                        <li class="param">
+                                <code class="param-name">config</code>
+                                <span class="type">Object</span>
+        
+        
+                            <div class="param-description">
+                                 
+                            </div>
+        
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name optional">[fontFamily= &quot;arial&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>The font family to use</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[fontSize= &quot;10px&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Text size / line height</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[fontStyle= &quot;normal&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>normal|italic|oblique</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[fontWeight= &quot;normal&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>normal|bold|bolder|lighter|100|200...</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[fontVariant= &quot;normal&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>normal|small-caps</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[fillStyle= &quot;black&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Fill colour to apply to the characters</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[strokeStyle]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Fill colour to apply to stroke (i.e. text outline)</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[strokeStyles= []]</code>
+                                            <span class="type">Array</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Fill colours to apply to strokes (i.e. text outlines). Listed in drawing order.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[lineWidth]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Stroke width in pixels.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[lineWidths= []]</code>
+                                            <span class="type">Array</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Stroke widths in pixels. Listed in drawing order.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[shadowColour= null]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Fill colour to apply to text shadow. Null = no shadow.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[shadowBlur= 0]</code>
+                                            <span class="type">Number</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Gaussian shadow blur radius in px. Larger numbers = more blur.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[shadowOffsetX= 0]</code>
+                                            <span class="type">Number</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Horizontal distance between shadow and characters in px.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[shadowOffsetY= 0]</code>
+                                            <span class="type">Number</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>Vertical distance between shadow and characters in px.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[baseHeightString= &quot;WWW&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>A canvas element that is taller than any character must be created to measure the text height of a new CanvasText object. This is calculated by measuring the width of the baseHeightString setting and using that as the height. Normally this value never needs to be changed.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[measureHeightString= &quot;IQqgjiy|0123456789,&quot;]</code>
+                                            <span class="type">String</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>This is the string that is written to the base canvas and used to measure the text height. It usually doesn&#39;t need to be changed unless a font has a particularly tall character or a game uses a reduced character set and you want to save some space.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name optional">[location]</code>
+                                            <span class="type">HTMLElement</span>
+                                            <span class="flag optional" title="This parameter is optional.">optional</span>
+        
+                                        <div class="param-description">
+                                            <p>The place in the document that generated text will be placed. Useful when converting values from px.</p>
+        
+                                        </div>
+        
+                                    </li>
+                                </ul>
+                        </li>
+                    </ul>
+                </div>
+        
+        
+        
+        </div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method private">
+                                <a href="#method_writeToCanvas">writeToCanvas</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setFontFamily">setFontFamily</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setFontSize">setFontSize</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setFontStyle">setFontStyle</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setFontWeight">setFontWeight</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setFontVariant">setFontVariant</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setFillStyle">setFillStyle</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setBaseHeightString">setBaseHeightString</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_setShadow">setShadow</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_addStroke.">addStroke.</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_removeStroke.">removeStroke.</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_measureTextHeight">measureTextHeight</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_createTextImage">createTextImage</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_modify">modify</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_clone">clone</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_writeToCanvas" class="method item private">
+    <h3 class="name"><code>writeToCanvas</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>string</code>
+                </li>
+                <li class="arg">
+                        <code>canvas</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">HTMLCanvasElement</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l66"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:66</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Writes the given string to a canvas using the current format settings</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">string</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>The text to write</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">canvas</code>
+                        <span class="type">HTMLCanvasElement</span>
+
+
+                    <div class="param-description">
+                        <p>The canvas to write it to</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">HTMLCanvasElement</span>:
+                    <p>the edited canvas</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFontFamily" class="method item public">
+    <h3 class="name"><code>setFontFamily</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fontFamily</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l181"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:181</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the font family to use when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fontFamily</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFontSize" class="method item public">
+    <h3 class="name"><code>setFontSize</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fontSize</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l194"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:194</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the font size to use when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fontSize</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFontStyle" class="method item public">
+    <h3 class="name"><code>setFontStyle</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fontStyle</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l207"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:207</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the font style to use when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fontStyle</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFontWeight" class="method item public">
+    <h3 class="name"><code>setFontWeight</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fontWeight</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l220"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:220</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the font style to use when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fontWeight</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFontVariant" class="method item public">
+    <h3 class="name"><code>setFontVariant</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fontVariant</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l233"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:233</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the font style to use when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fontVariant</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFillStyle" class="method item public">
+    <h3 class="name"><code>setFillStyle</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>fillStyle</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l246"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:246</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the fill style (i.e. text colour) to use when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">fillStyle</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setBaseHeightString" class="method item public">
+    <h3 class="name"><code>setBaseHeightString</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>string</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l258"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:258</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the string to use when setting the height of the test canvas during text height measurement. This should not be called unless measuring a font that is at least 3 times as tall as it is wide.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">string</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setShadow" class="method item public">
+    <h3 class="name"><code>setShadow</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>colour</code>
+                </li>
+                <li class="arg">
+                        <code>blur</code>
+                </li>
+                <li class="arg">
+                        <code>offsetX</code>
+                </li>
+                <li class="arg">
+                        <code>offsetY</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l271"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:271</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the text shadow to apply when creating the text image.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">colour</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Shadow colour.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">blur</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Shadow blur amount.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">offsetX</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Horizontal shadow offset.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">offsetY</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>Vertical shadow offset.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_addStroke." class="method item public">
+    <h3 class="name"><code>addStroke.</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>style</code>
+                </li>
+                <li class="arg">
+                        <code>width</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l294"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:294</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Adds a stroke/outline to the text.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">style</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>strokeStyle property to apply.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">width</code>
+                        <span class="type">Number</span>
+
+
+                    <div class="param-description">
+                        <p>lineWidth property to apply.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_removeStroke." class="method item public">
+    <h3 class="name"><code>removeStroke.</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>style</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l309"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:309</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Remove an outline from the object. This is probably only useful for debug..</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">style</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Stroke style to remove from the text image.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_measureTextHeight" class="method item public">
+    <h3 class="name"><code>measureTextHeight</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[string]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l326"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:326</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>A laborious function for accurately measuring text height - far more expensive than it should be.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[string]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>Sample string used to measure the height (retained between calls; has a default value).</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Number</span>:
+                    <p>Text height in px.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_createTextImage" class="method item public">
+    <h3 class="name"><code>createTextImage</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>string</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">HTMLCanvasElement</span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l386"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:386</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Given a string, writes it to the object canvas and returns a copy.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">string</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        <p>Text to convert to an image</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">HTMLCanvasElement</span>:
+                    <p>An offscreen canvas element containing the text</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_modify" class="method item">
+    <h3 class="name"><code>modify</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>config</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l417"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:417</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Takes a text configuration and uses it to modify the existing settings for this object.
+Text height re-measurement will only occur if it is necessary.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">config</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name optional">[fontFamily= &quot;arial&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>The font family to use</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[fontSize= &quot;10px&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Text size / line height</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[fontStyle= &quot;normal&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>normal|italic|oblique</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[fontWeight= &quot;normal&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>normal|bold|bolder|lighter|100|200...</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[fontVariant= &quot;normal&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>normal|small-caps</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[fillStyle= &quot;black&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Fill colour to apply to the characters</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[strokeStyle]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Fill colour to apply to stroke (i.e. text outline)</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[strokeStyles= []]</code>
+                                    <span class="type">Array</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Fill colours to apply to strokes (i.e. text outlines). Listed in drawing order.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[lineWidth]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Stroke width in pixels.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[lineWidths= []]</code>
+                                    <span class="type">Array</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Stroke widths in pixels. Listed in drawing order.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[shadowColour= null]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Fill colour to apply to text shadow. Null = no shadow.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[shadowBlur= 0]</code>
+                                    <span class="type">Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Gaussian shadow blur radius in px. Larger numbers = more blur.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[shadowOffsetX= 0]</code>
+                                    <span class="type">Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Horizontal distance between shadow and characters in px.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[shadowOffsetY= 0]</code>
+                                    <span class="type">Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>Vertical distance between shadow and characters in px.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[baseHeightString= &quot;WWW&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>A canvas element that is taller than any character must be created to measure the text height of a new CanvasText object. This is calculated by measuring the width of the baseHeightString setting and using that as the height. Normally this value never needs to be changed.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[measureHeightString= &quot;IQqgjiy|0123456789,&quot;]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>This is the string that is written to the base canvas and used to measure the text height. It usually doesn&#39;t need to be changed unless a font has a particularly tall character or a game uses a reduced character set and you want to save some space.</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+                    <p>The CanvasText object, so functions can be chained.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_clone" class="method item public">
+    <h3 class="name"><code>clone</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/Scratchomatic_scripts_uncompressed_CanvasText.js.html#l492"><code>Scratchomatic&#x2F;scripts&#x2F;uncompressed&#x2F;CanvasText.js:492</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Returns a &quot;deep&quot; copy of this Object, with no shared references. This is useful when text varies only slightly in style, e.g when using different skins, or multiple text sizes.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/CanvasText.html" class="crosslink">CanvasText</a></span>:
+            </div>
+        </div>
+
+
+</div>
+            </div>
+
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

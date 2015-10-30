@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Scratchomatic/scripts/uncompressed/game_states.js - Scratchomatic</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="Scratchomatic" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/CanvasText.html">CanvasText</a></li>
+                                <li><a href="../classes/CanvasToolkit.html">CanvasToolkit</a></li>
+                                <li><a href="../classes/EasingFunctions.html">EasingFunctions</a></li>
+                                <li><a href="../classes/Point.html">Point</a></li>
+                                <li><a href="../classes/ScratchAnimationTriggers.html">ScratchAnimationTriggers</a></li>
+                                <li><a href="../classes/ScratchBrushTypes.html">ScratchBrushTypes</a></li>
+                                <li><a href="../classes/ScratchController.html">ScratchController</a></li>
+                                <li><a href="../classes/ScratchGameTypes.html">ScratchGameTypes</a></li>
+                                <li><a href="../classes/ScratchMask.html">ScratchMask</a></li>
+                                <li><a href="../classes/Symbol.html">Symbol</a></li>
+                                <li><a href="../classes/SymbolGroup.html">SymbolGroup</a></li>
+                                <li><a href="../classes/SymbolZIndices.html">SymbolZIndices</a></li>
+                                <li><a href="../classes/TimeLine.html">TimeLine</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/CanvasText.html">CanvasText</a></li>
+                                <li><a href="../modules/CanvasToolkit.html">CanvasToolkit</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: Scratchomatic/scripts/uncompressed/game_states.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Re-initialise the required namespace objects if they aren&#x27;t introduced in the global scope
+pgc = window.pgc || {};
+// Game object that describes the used events and states
+pgc.Game = pgc.Game || {};
+
+/** --------------------------------------------------------------------------------------------------- **/
+/** Establishing the required states, events and transaction for the game loop                          **/
+/** --------------------------------------------------------------------------------------------------- **/
+
+/**
+ * Defining the default game states and events
+ * @param  {object} game    pgc.Game - namespace for the game
+ * @param  {object} toolkit PGCUniverse.PGCToolkit - Toolkit for mostly DOM manipulating
+ * @return {void}
+ */
+(function(game, toolkit){
+
+    var $ = toolkit.$,
+
+        events = {},
+        states = {},
+
+        SAVED_STATE_FIELD = gameName+&quot;-currentState&quot;,
+
+        // checking if the Heartbeat is enabled using the merchant configuration
+        heartbeatEnabled = window.touchCasinoBrandConf &amp;&amp; window.touchCasinoBrandConf.enableHeartbeat || false,
+
+        // helper function to store reference for the old function and make it available to
+        // get invoked in the new function by using the this.deafult() signature
+        defaultify = function(old, callback){
+            var isFunc = function(func){
+                    return &quot;function&quot; === typeof func;
+                },
+                handler = {
+                    default: function(){
+                        if (isFunc(old)){
+                            return old.apply(null, Array.prototype.slice(arguments));
+                        }
+                    }
+                };
+            return function(){
+                var args = Array.prototype.slice.call(arguments);
+                if (isFunc(callback)){
+                    return callback.apply(handler, args);
+                }
+            };
+        },
+
+        startOrResumeGame = function(){
+            // triggering the initialisations (implementation can be found in main.js)
+            if (window.initialise){
+                if (!initialise.itHasBeenCalled){
+
+                    initialise(game.ScratchZone);
+                    initialise.itHasBeenCalled = true;
+
+                } else {
+
+                    // reseting the animationEnd listeners in case some inGame interaction has removed them.
+                    listenToLastAnimation();
+                    pgc.Game.ScratchController.startNewGame();
+
+                }
+            }
+
+            // stopping the heartbeating from being sent during the gameplay
+            stopHeartbeating();
+
+            game.updateBank(game.Server.Response.bank);
+            game.updatePriceLabel(game.price);
+
+            $(document.body).addClass(&quot;gameStarted&quot;);
+            switchSceneTo(&#x27;game-scene&#x27;);
+
+        },
+
+        startHeartbeating = function(){
+            if (!heartbeatEnabled){
+                return;
+            }
+            game.heartbeatManager.start();
+        },
+
+        stopHeartbeating = function(){
+            if (!heartbeatEnabled){
+                return;
+            }
+            game.heartbeatManager.stop();
+        },
+
+        playIntroSound = function(callback){
+
+            var introSoundName = pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.intro),
+                mainSprite;
+
+            // for the intro animation sound
+            if (game.getAudioEngine() &amp;&amp; game.getAudioEngine().version &gt; 1) {
+
+                mainSprite = game.getAudioEngine().getAudioSprite(pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.main));
+
+                // determine if there are multiple intro sounds for the different themes
+                if (mainSprite &amp;&amp; !mainSprite.hasTrack(introSoundName)){
+                    introSoundName += [&quot;-&quot;, game.chosenTheme].join(&quot;&quot;);
+                }
+
+                // If the intro track isn&#x27;t available we will not invoke the timeout as the ambient sound 
+                // should be triggered only when the intro finishes 
+                if (mainSprite &amp;&amp; !mainSprite.hasTrack(introSoundName)){
+                    return;
+                }
+
+                // The fallback won&#x27;t allow playback of multiple sounds so let&#x27;s skip the intro sound if we know WebAudioAPI is not present
+                setTimeout(function() {
+                    game.getAudioEngine().playSound(pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.main), introSoundName, function() {
+                        if (&quot;function&quot; !== typeof callback){
+                            return;
+                        }
+                        callback();
+                    });
+                }, 500);
+
+            }
+        },
+
+        playAmbientSound = function(){
+            game.playAmbientSound();
+        };
+
+    /** --------------------------------------------------------------- **/
+    /** STATES                                                          **/
+    /** --------------------------------------------------------------- **/
+
+    // essential initialisation
+    states.Init = {
+
+        enter: function(event, from, to, args){
+
+            // obtaining the first object from the args parameter either it&#x27;s an array or an object
+            var responseObject = args || {};
+            game.Client.processResponse(responseObject);
+
+            initUserData();
+            initLocalisation();
+            initSelectionFlow();
+
+            var helpButton = $(&quot;#help-button-wrapper&quot;);
+            helpButton.addEventListener(DOMUtil.touchEvent, function() {
+                if ($(&quot;#help-button&quot;).hasClass(&quot;disabled&quot;)){
+                    return;
+                }
+                pgc.Game.StateMachine.loadinfo();
+            });
+
+            // start the heartbeating
+            startHeartbeating();
+
+            game.updateBank(game.Server.Response.bank);
+        },
+        leave: function(){
+            // ...
+        }
+
+    };
+
+    // Required reinitialisation logic
+    states.Reset = {
+
+        enter: function(){
+            // ...
+        },
+        leave: function(){
+            // ...
+        }
+
+    };
+
+    states.Unfinished = {
+
+        enter: function(){
+
+            var storedChosenTheme = game.UserData &amp;&amp; parseInt(game.UserData.getUserData(&quot;chosenTheme&quot;)) || 1;
+
+            $(document.body).addClass(&quot;NoIntroAnimations&quot;);
+
+            setChosenSkin(storedChosenTheme);
+
+            game.StateMachine.inGame();
+
+        },
+        leave: function(){
+
+            startOrResumeGame();
+            loadUnfinishedGameData();
+
+            // waiting for a while to hold up playing the ambience music so that the initial noises 
+            // can be played through when it comes to an unfinieshed game
+            setTimeout(function(){
+                if (pgc.Game.audio &amp;&amp; pgc.Game.audio.audioEnabled){
+                    playAmbientSound();
+                }
+            }, 3000);
+
+        }
+
+    };
+
+    // Selecting and purchasing the desired scratch card
+    states.Purchase = {
+
+        enter: function(){
+
+            var dots = &quot;&quot;,
+                spaces = &quot;   &quot;;
+            var checkTicketPrice = function () {
+                var ticketPrice = $(&#x27;#purchase-ticket-price&#x27;);
+                if(pgc.Game.Server &amp;&amp; pgc.Game.Server.Response.price){
+                    ticketPrice.innerHTML = &quot;&lt;p&gt;&quot;+pgc.Game.multiCurrencyManager.formatAmount(pgc.Game.Server.Response.price,false,true,1)+&quot;,-&lt;/p&gt;&quot;;
+                } else {
+                    dots += &quot;.&quot;;
+                    spaces = spaces.substr(0, spaces.length - 1);
+                    if(dots === &quot;....&quot;) {
+                        dots = &quot;&quot;;
+                        spaces = &quot;   &quot;;
+                    }
+                    ticketPrice.innerHTML = &quot;&lt;p&gt;&quot;+spaces+dots+&quot;,-&lt;/p&gt;&quot;;
+                    setTimeout(checkTicketPrice, 1000);
+                }
+            };
+            checkTicketPrice();
+
+            game.updateBank(game.Server.Response.bank);
+            // showing the skin selection scene
+            switchSceneTo(&#x27;purchase-scene&#x27;);
+
+            // removing the dedicated BODY TAG so that we could restart the intro sequence if it&#x27;s required
+            $(&quot;body&quot;).removeClass(&quot;gameStarted&quot;);
+
+            // removeing the NoIntroAnimations body tag as this point we can make sure that
+            // this isn&#x27;t an unfinished game
+            $(document.body).removeClass(&quot;NoIntroAnimations&quot;);
+
+            var fader = $(&quot;#sceneFader&quot;),
+                mainbar = $(&quot;.main-game-bar&quot;);
+            if(fader){
+                fader.removeClass(&quot;shown&quot;);
+                if(mainbar) {
+                    mainbar.removeClass(&quot;hideBehindFader&quot;);
+                }
+            }
+        },
+        leave: function(event, from, to, args){
+
+            if (&quot;Info&quot; !== to){
+
+                if ( pgc.Game.isAudioEngineDelayedLoad() ) {
+                    pgc.Game.preloadAudioMobileFallback();
+                } else {
+                    // @TODO the AudioEngine should handle the exceptions triggered by native code
+                    try {
+                        pgc.Game.getAudioEngine().playSound(pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.main), pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.buy));
+                    } catch (ex) {
+                        // just absorbing the exception ...
+                    }
+                }
+
+                pgc.Game.updateAmbientLastEventTime();
+
+            }
+
+            // we can leave the purchase screen for the info page therefore we have to 
+            // limit this logic only for the selection
+            if(to == &quot;Selection&quot; || to == &quot;Intro&quot;){
+                game.Client.sendBuyMessage(function(){
+                    game.updateBank(game.Server.Response.bank);
+                    game.StateMachine.transition();
+                });
+                return StateMachine.ASYNC;
+            }
+        }
+
+    };
+
+    // Showing the selection page on desktops and handling with the selection flow
+    states.Selection = {
+
+        enter: function(){
+            // showing the skin selection scene
+            switchSceneTo(&#x27;selection-scene&#x27;);
+        },
+
+        leave: function(){
+            resetSelectionFlow();
+            pgc.Game.updateAmbientLastEventTime();            
+        }
+    };
+
+    // Showing the game scene and starting the intro sequence
+    states.Intro = {
+
+        enter: function(){
+
+            startOrResumeGame();
+            playIntroSound(function(){
+                playAmbientSound();
+            });
+
+        },
+        leave: function(){
+            // ...
+        }
+
+    };
+
+    // Default state during play
+    states.InGame = {
+
+        enter: function(){
+            var mainbar = $(&quot;.main-game-bar&quot;);
+            if($(&quot;#purchase-button&quot;)){
+                $(&quot;#purchase-button&quot;).removeClass(&quot;pressed&quot;);
+            }
+
+            if(mainbar){
+                mainbar.removeClass(&quot;hideBehindFader&quot;);
+            }
+            game.idleManager.listen();
+
+            game.updateBank(game.Server.Response.bank);
+        },
+        leave: function(event, from, to){
+            game.idleManager.stop();
+        }
+
+    };
+
+    // All the scratch zones have been revealed
+    states.Summary = {
+
+        enter: function(){
+            
+            // sending the &quot;finish&quot; message and registering the showing of the popup 
+            // when the request has been processed
+            setTimeout(function(){
+
+                if (hasWin(game.ScratchZone) &amp;&amp; !hasInstantWin(game.ScratchZone)){
+                    // showing and updating the win texts on the regular win popup
+
+                    pgc.Game.getAudioEngine().playSound(pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.main), pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.win));
+
+                    var updateWinPopupTable = new WinPopupTable();
+                    updateWinPopupTable.createContent(game.ScratchZone, game.multiCurrencyManager);
+                    PopupHelper.showPopup(&quot;win-popup&quot;,true);
+                } else if(hasInstantWin(game.ScratchZone)) {
+                    //clover win
+                    PopupHelper.showPopup(&quot;bonuswin-popup&quot;,true);
+                } else {
+                    //no win
+                    PopupHelper.showPopup(&quot;nowin-popup&quot;,true);
+                }
+
+            }, 2000);
+
+        },
+        leave: function(){
+            if(game.particleSystem) {
+                game.particleSystem.reset();
+            }
+
+            game.fadeAmbientSound(5); //TODO: this takes less than 5s, I need to fix the function
+        }
+
+    };
+
+    // All the scratch zones have been revealed
+    states.GameFinished = {
+
+        enter: function(){
+
+            game.EndGamePopupConfirmed = false;
+            resetSavedGameData();
+            game.StateMachine.init();
+
+        },
+        leave: function(){
+            // ...
+        }
+
+    };
+
+    // All the scratch zones have been revealed
+    states.Info = {
+
+        enter: function(){
+            var chosentheme = game.chosenTheme || 1;
+            setChosenSkin(chosentheme);
+            // loading the info scene
+            switchSceneTo(&#x27;info-scene&#x27;);
+
+        },
+        leave: function(){
+            // ...
+        }
+
+    };
+
+    /** --------------------------------------------------------------- **/
+    /** EVENTS and TRANSACTIONS                                         **/
+    /** --------------------------------------------------------------- **/
+    // As following a proposed naming convention, the events should be
+    // called after the state which the flow enters
+
+    events.init = {
+
+        from: [&quot;none&quot;, &quot;GameFinished&quot;, &quot;result&quot;],
+        to: [&quot;Init&quot;, &quot;Reset&quot;],
+        before: function(){
+            // ...
+        },
+        after: function(){
+
+            // determining if whether is an unfinished game or not
+            if (game.Server.Response.gameState == &quot;result&quot;){
+                // if the last saved state was the selection then we have to push the game back to that state
+                if (game.UserData.getUserData(SAVED_STATE_FIELD) === &quot;Selection&quot;){
+                    game.StateMachine.selection();
+                } else {
+                    game.StateMachine.unfinished();
+                }
+            } else {
+                game.StateMachine.purchase();
+            }
+
+        }
+
+    };
+
+    events.purchase = {
+
+        from: [&quot;none&quot;, &quot;GameFinished&quot;, &quot;Init&quot;, &quot;Reset&quot;],
+        to: &quot;Purchase&quot;,
+        before: function(){
+            // ...
+        },
+        after: function(){
+            // ...
+        }
+
+    };
+
+    events.selection = {
+
+        from: [&quot;Purchase&quot;, &quot;Info&quot;, &quot;Init&quot;],
+        to: &quot;Selection&quot;,
+        before: function(){
+            // if the selection scene isn&#x27;t supported according the curcumstences we simply skip it
+            // by going to the Intro state right away
+            if (!game.hasSelectionScene()){
+                game.StateMachine.intro();
+                // StateMachine needs to terminate the original flow as we skip the Selection state
+                return false;
+            }
+        },
+        after: function(){
+            // ...
+        }
+
+    };    
+
+    events.intro = {
+
+        from: [&quot;Purchase&quot;, &quot;Selection&quot;],
+        to: &quot;Intro&quot;,
+        before: function(){
+            // ...
+        },
+        after: function(){
+            // ...
+        }
+
+    };
+
+    events.unfinished = {
+
+        from: [&quot;Init&quot;],
+        to: &quot;Unfinished&quot;,
+        before: function(){
+            // ...
+        },
+        after: function(){
+            // ...
+        }
+
+    };    
+
+    events.inGame = {
+
+        from: [&quot;Intro&quot;, &quot;Unfinished&quot;, &quot;Summary&quot;],
+        to: &quot;InGame&quot;,
+        before: function(){
+            // ...
+        },
+        after: function(){
+            // ...
+        }
+
+    };
+
+    events.summary = {
+
+        from: [&quot;InGame&quot;],
+        to: &quot;Summary&quot;,
+        before: function(){
+
+            game.Client.sendFinishMessage(function(){
+                // invoking the finish event after the request has been processed
+                game.StateMachine.finish();
+                // restarting to hit the server with the heartbeat messages
+                startHeartbeating();
+            });
+
+        },
+        after: function(){
+            // ...
+        }
+
+    };
+
+    events.finish = {
+
+        from: [&quot;Summary&quot;],
+        to: &quot;GameFinished&quot;,
+        before: function(){
+
+            if (game.Client.isFinishMessageProcessed() &amp;&amp; game.EndGamePopupConfirmed){
+                if (!PopupHelper.isAllHidden()){
+                    PopupHelper.hideAll();
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            
+        },
+        after: function(){
+            // ...
+        }
+
+    };
+
+    //paytable Decorator is used to create dom element for each paytable line.
+    game.paytableDecorator = function(prize, payouts){
+        var payoutItem = document.createElement(&quot;div&quot;);
+        var prizeName = document.createElement(&quot;div&quot;);
+        prizeName.innerHTML = prize;
+        prizeName.className = &quot;prize-name&quot;;
+
+        var value = document.createElement(&quot;div&quot;);
+        value.innerHTML =  &quot;1:&quot;+payouts[prize];
+        value.className = &quot;prize-desc&quot;;
+        payoutItem.className = &quot;payoutItem&quot;;
+        payoutItem.appendChild(prizeName);
+        payoutItem.appendChild(value);
+
+        return payoutItem;
+
+        //payoutTable.appendChild(payoutItem);
+    };
+
+    events.loadinfo = {
+
+        from: [&quot;Purchase&quot;,&quot;Selection&quot;,&quot;InGame&quot;],
+        to: &quot;Info&quot;,
+        before: function(){
+
+
+            // markup templates
+            var templates = {
+                // Add key-value pairs for defining new templates
+                &quot;{symbol:w}&quot;: &quot;&lt;span class=\&quot;symbol WildSymbol\&quot;&gt;&lt;/span&gt;&quot;,
+                &quot;{symbol:x}&quot;: &quot;&lt;span class=\&quot;symbol WildSymbol2\&quot;&gt;&lt;/span&gt;&quot;,
+                &quot;{symbol:y}&quot;: &quot;&lt;span class=\&quot;symbol WildSymbol3\&quot;&gt;&lt;/span&gt;&quot;
+            };
+
+            writeText(&quot;infoPageTitle&quot;,&quot;info.page.title&quot;,&quot;Informajosn&quot;);
+            writeText(&quot;howToPlayItemTitle&quot;,&quot;info.howtoplay.title&quot;,&quot;Slik spiller du&quot;);
+            writeText(&quot;paytableItemTitle&quot;,&quot;info.paytable.title&quot;,&quot;Premieoversikt&quot;);
+
+            var howToPlayContent,
+                howToPlayTop,
+                howToPlayBottom,
+                howToPlayTitle = getLocalisedStringWithDefaultText(&quot;info.howtoscratch.title&quot;);
+
+            // desktop
+            if (&quot;default&quot; === userAgent.OS){
+                howToPlayTop = getLocalisedStringWithDefaultText(&quot;info.howtoplay.top.desktop&quot;) || getLocalisedStringWithDefaultText(&quot;info.howtoplay.top&quot;);
+                howToPlayBottom = getLocalisedStringWithDefaultText(&quot;info.howtoplay.bottom.desktop&quot;);
+                howToPlayContent = howToPlayTop + &quot;&lt;h1 id=&#x27;paytable-header&#x27;&gt;&quot;+howToPlayTitle+&quot;&lt;/h1&gt;&quot; + howToPlayBottom;
+            } else {
+                howToPlayTop = getLocalisedStringWithDefaultText(&quot;info.howtoplay.top.mobile&quot;) || getLocalisedStringWithDefaultText(&quot;info.howtoplay.top&quot;);
+                howToPlayBottom = getLocalisedStringWithDefaultText(&quot;info.howtoplay.bottom.mobile&quot;);
+                howToPlayContent = howToPlayTop + &quot;&lt;h1 id=&#x27;paytable-header&#x27;&gt;&quot;+howToPlayTitle+&quot;&lt;/h1&gt;&quot; + howToPlayBottom;
+            }
+
+            // replaceing the placeholders throughout the text with the defined markup
+            for (var key in templates){
+                howToPlayContent = howToPlayContent.replace(new RegExp(key, &quot;g&quot;), templates[key]);
+            }
+            howtoplayContent.innerHTML = howToPlayContent;
+
+            var infoCloseButton = $(&#x27;#info-page-close-wrapper&#x27;);
+
+            infoCloseButton.addEventListener(DOMUtil.touchEvent,function(){
+
+                pgc.Game.getAudioEngine().playSound(pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.main), pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.control));
+
+                if(game.StateMachine.previous == &#x27;InGame&#x27;){
+                    game.StateMachine.closeingameinfo();
+                }else if(game.StateMachine.previous == &#x27;Purchase&#x27;){
+                    game.StateMachine.closepurchaseinfo();
+                }else if(game.StateMachine.previous == &#x27;Selection&#x27;){
+                    game.StateMachine.selection();
+                }
+
+            },false);
+            var payoutTable = document.getElementById(&quot;payoutTable&quot;);
+
+            var titleHTML = &#x27;&lt;div class=&quot;payoutItem title&quot;&gt;&lt;div &gt;&#x27;+getLocalisedStringWithDefaultText(&quot;info.paytable.prizetitle&quot;, &quot;Premie&quot;)+&#x27;&lt;/div&gt;&lt;div&gt;&#x27;+getLocalisedStringWithDefaultText(&quot;info.paytable.oddstitle&quot;, &quot;Odds&quot;)+&#x27;&lt;/div&gt;&#x27;;
+            titleHTML = (titleHTML.replace(&quot;{prize.amount}&quot;,&quot;&quot;)).replace(&quot;{odds}&quot;,&quot;Odds&quot;);
+
+            payoutTable.innerHTML = titleHTML;
+
+            var paytable = game.Paytable || {};
+            var payouts = paytable &amp;&amp; paytable.payouts || {};
+            var keys = [];
+
+            if (payouts){
+                for(var prize in payouts){
+                    var payoutItem = game.paytableDecorator(prize, payouts);
+                    if (payoutItem) {
+                        payoutTable.appendChild(payoutItem);
+                    }
+                }
+            }
+
+            var mathsElm = $(&quot;#infopage-maths&quot;);
+
+            var prizeinfo = pgc.Game.prizeInfo || {
+                &quot;winningOdds&quot; : &quot;1:4,17&quot;,
+                &quot;prizeRatio&quot; : &quot;57.51 %&quot;
+            };
+
+            var mathsText = [&quot;&lt;p&gt;&quot;,getLocalisedStringWithDefaultText(&quot;maths.winning.odds&quot;, &quot;winning Probability&quot;),&quot; : &quot;,paytable.winningOdds,&quot;&lt;/p&gt;&quot;,
+                             &quot;&lt;p&gt;&quot;,getLocalisedStringWithDefaultText(&quot;maths.rtp&quot;, &quot;Prize ratio&quot;),&quot; : &quot;,paytable.prizeRatio,&quot;&lt;/p&gt;&quot;,
+                             &quot;&lt;p&gt;&quot;,getLocalisedStringWithDefaultText(&quot;maths.regulation&quot;, &quot;Regulated as eSkrapespill&quot;),&quot;&lt;/p&gt;&quot;];
+            mathsElm.innerHTML = mathsText.join(&quot;&quot;);
+
+            // playing the click sound
+            pgc.Game.getAudioEngine().playSound(pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.main), pgc.Game.ScratchController.skinSelect(pgc.Game.audio.names.control));
+
+        },
+        after: function(){
+            // ...
+        }
+
+    };
+
+    events.closepurchaseinfo = {
+        from: [&quot;Info&quot;],
+        to: [&quot;Purchase&quot;],
+        before: function(){
+            // ...
+        },
+        after: function(){
+            // ...
+        }
+    };
+    events.closeingameinfo = {
+        from: &quot;Info&quot;,
+        to: [&quot;InGame&quot;],
+        before: function(){
+            // ...
+        },
+        after: function(){
+            // ...
+            switchSceneTo(&#x27;game-scene&#x27;);
+        }
+    };
+
+    /**
+     * Exposing a function into the window global object to initialise the GameStateMachine
+     * and to populate it with the desired game logic
+     */
+    game.setupGameStateMachine = function(){
+
+        // set up the StateMachine&#x27;s reference in the pgc.Game namespace
+        game.StateMachine = pgc.GameStateMachine.create({
+
+            // using the current state as a body tag whenever the state has been changed
+            useBodyTag: true,
+
+            // pre-declared events and states
+            events: events,
+            states: states
+
+        });
+
+        // overwriting the default error handling to avoid throwing uncaugth exceptions
+        game.StateMachine.error = function(){ console.log([].slice.call(arguments)); };
+        
+        // capturing 
+        game.StateMachine.onenterstate = defaultify(game.StateMachine.onenterstate, function(evt, from, to){
+            // if the onenterstate function has already been defined 
+            this.default();
+
+            // from === &quot;none&quot; means that statemachine is being pushed to the Init state when the game loads,
+            // we therefore have to ignore this state and avoid saving this in order to not rewrite 
+            // the actually saved state 
+            if (game.UserData &amp;&amp; from !== &quot;none&quot;){
+                game.UserData.setUserData(SAVED_STATE_FIELD, to);
+            }
+        });
+
+    };
+
+    /**
+     * Adding new states or overwriting default states
+     * @param  {string} state    idintifier for the state it is desired to access
+     * @param  {object} stateObj Object for declaring the &quot;enter&quot; and &quot;leave&quot; callbacks
+     * @return void
+     * @example
+     * pgc.Game.state(&quot;Init&quot;, {
+     *     enter: function(){
+     *         this.default();
+     *         someSpecificThingsToDo();
+     *     }
+     * });
+     */
+    game.state = function(state, stateObj){
+
+        var createHandler = function(type){
+                var handler = stateObj[type];
+                if (!handler){
+                    // use the old handler and leave it untouched
+                    if (states[state][type]){
+                        return states[state][type];
+                    } else {
+                        // neither the old handler nor the new one has been declared
+                        return function(){};
+                    }
+                }
+                return states[state][type] ? defaultify(states[state][type], handler) : handler;
+            };
+
+
+        if (!state || !stateObj){
+            throw &quot;Invalid parameter has been passed!&quot;;
+        }
+
+        if (!states[state]){
+            states[state] = stateObj;
+        } else {
+            states[state] = {
+                enter: createHandler(&quot;enter&quot;),
+                leave: createHandler(&quot;leave&quot;)
+            };
+        }
+
+    };
+
+    /**
+     * Adding new events or overwriting default events
+     * @param  {string} event    idintifier for the state it is desired to access
+     * @param  {object} eventObj Object for declaring the &quot;before&quot; and &quot;after&quot; callbacks and define the transition
+     * @return void
+     */
+    game.event = function(event, eventObj){
+
+        var createHandler = function(type){
+                var handler = eventObj[type] || function(){};
+                return events[event][type] ? defaultify(events[event][type], handler) : handler;
+            };
+
+
+        if (!event || !eventObj || !eventObj.to){
+            throw &quot;Invalid parameter has been passed!&quot;;
+        }
+
+        if (!events[event]){
+            events[event] = eventObj;
+        } else {
+            events[event] = {
+                before: createHandler(&quot;before&quot;),
+                after: createHandler(&quot;after&quot;),
+                to: eventObj.to || &quot;UnregisteredState&quot;,
+                from: eventObj.from || &quot;*&quot;
+            };
+        }
+
+    };
+
+
+})(pgc.Game, PGCUniverse.PGCToolkit);
+
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

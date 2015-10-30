@@ -1,0 +1,45 @@
+/** CSSLint needs to have at least one class declaration **/
+html {
+  text-align: auto; }
+
+/** ============================================================== **/
+/** Animation KeyFrames **/
+/** ============================================================== **/
+/*# sourceMappingURL=animations.scss.map */
+.scratchZonesBasicAnimation {
+  animation: mainExpand 0.25s linear 0.2s both; }
+
+.scratchZonesBonusAnimation {
+  animation: bonusExpand 0.25s linear 0.283s both; }
+
+.scratchZonesTitleContainer {
+  animation: slideDownSquish 0.333s linear 0.325s both; }
+
+@keyframes mainExpand {
+  from {
+    transform: scale(0.3, 0.3);
+    opacity: 0.0; }
+  to {
+    transform: scale(1, 1);
+    opacity: 1.0; } }
+@keyframes bonusExpand {
+  from {
+    transform: scale(0.45, 0.45);
+    opacity: 0.0; }
+  to {
+    transform: scale(1, 1);
+    opacity: 1.0; } }
+@keyframes slideDownSquish {
+  0% {
+    opacity: 0.0;
+    margin-top: -3em;
+    transform: scale(1, 1); }
+  62.5% {
+    margin-top: 0;
+    transform: scale(1.2, 0.8); }
+  100% {
+    opacity: 1.0;
+    margin-top: 0;
+    transform: scale(1, 1); } }
+
+/*# sourceMappingURL=animations.css.map */

@@ -1,0 +1,11 @@
+{
+  "qualified-headings": true,
+  "unique-headings": true,
+  "known-properties": false,
+  "ids": false,
+  "font-sizes": false,
+  "box-model": false,
+  "important": false,
+  "adjoining-classes": false,
+  "unqualified-attributes": false
+}

@@ -1,0 +1,401 @@
+/* background */
+#game,
+.info-page {
+  background: linear-gradient(#00405d, #0092c8 44%, #00405d); }
+
+/* Re styling the balace info */
+.main-game-bar .balance-info {
+  color: #00b38f; }
+
+/* Re styling the balace info on game scene, only put these lines if the balance colour are different for each Skin */
+.Skin-2.gameStarted .main-game-bar .balance-info {
+  color: #ee352a; }
+
+.Skin-3.gameStarted .main-game-bar .balance-info {
+  color: #a13295; }
+
+/* Re styling the button template */
+.buttonDefault {
+  background-color: #00b38f;
+  border-radius: 3em;
+  height: 2.5em;
+  line-height: 2.5em;
+  width: 7em; }
+
+.buttonDefault:active,
+.buttonDefault:hover {
+  background-color: #33e1be; }
+
+/* Restyling the purchase scene "buy" button */
+#purchase-button {
+  background-color: #000000; }
+
+/* Restyling the purchase scene ticket price, also change the font size on the ticket price if needed */
+#purchase-ticket-price {
+  top: 17.5em;
+  border: 0.3em solid white;
+  background-color: #00b38f; }
+
+#purchase-ticket-price p {
+  font-size: 2.35em; }
+
+/* Restyling the selection scene title text */
+#selection-title-text {
+  color: black; }
+
+.selectionLogo {
+  display: block;
+  width: 10em;
+  height: 10em;
+  margin: 0 auto 1em;
+  background-size: 10em 10em;
+  background-repeat: no-repeat; }
+
+/* Re styling the info page */
+.info-page .page-title {
+  background-color: #00b38f; }
+
+.info-page .item-content {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1.25em; }
+
+.info-page,
+.info-page .item-content H1 {
+  color: #00b38f; }
+
+.info-page .info-item.howtoplay .item-content {
+  padding: 1em 0.5em; }
+
+.info-page .info-content .item-title {
+  color: #00b38f; }
+
+.info-page .subtitle {
+  color: #3c591c;
+  font-size: 1.4em;
+  font-family: "FuturaBoldCondensedBT"; }
+
+.info-page .howtoplay-title-text::before,
+.info-page .paytable-title-text::before {
+  background-color: #00b38f;
+  color: #ffffff; }
+
+.info-page .payoutTable .payoutItem {
+  color: #000000;
+  border: none; }
+
+.info-page .payoutTable .payoutItem:nth-child(odd) {
+  background-color: #ffffff; }
+
+.info-page .payoutTable .payoutItem:nth-child(even) {
+  background-color: #0091c7; }
+
+.info-page .payoutTable .payoutItem.title {
+  background-color: #00b38f;
+  color: white; }
+
+/* for info page symbols, add as needed */
+/* Restyle maths info */
+.mathsinfo {
+  color: #ffffff; }
+
+/* add priceLabel only if needed to show price Label, and add your own styling as needed.*/
+.priceLabel {
+  display: block; }
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                                 GAME SCENE                                                  **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+/* Adjust the size and position of the background crest image */
+#purchase-scene,
+#selection-scene,
+#game-scene {
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  z-index: 0; }
+
+/** Change the game_sprites_all.png image size accordingly  **/
+.game-sprite {
+  background-size: 32.7em 16.8em; }
+
+/* Re adjust the size of the scratchZoneWrapper for the game scene. */
+.scratchZonesWrapper {
+  width: 100%;
+  margin: 3em auto;
+  font-size: 1.28em; }
+
+.scratchZonesTitleContainer {
+  width: 100%;
+  height: 3.5em;
+  position: absolute;
+  top: 3em; }
+
+.scratchZonesTitle {
+  background-size: 22em 15.2em;
+  width: 22em;
+  height: 3.5em;
+  margin: -1.1em auto; }
+
+.scratchZonesContainer {
+  margin: 0 auto;
+  width: 100%;
+  height: 35.1em; }
+
+.scratchZoneBasicContainer {
+  position: absolute;
+  background-size: 28em 47.17em;
+  width: 28em;
+  height: 33em; }
+
+#scratch-zone-basic {
+  width: 24.2em;
+  height: 17.85em;
+  margin-left: 2em;
+  margin-top: 1.8em; }
+
+.scratchZoneBonusContainer {
+  position: absolute;
+  background-size: 28em 47.17em;
+  background-position-x: -0.9em;
+  background-position-y: -34.5em;
+  width: 24.6em;
+  height: 12.3em;
+  margin-left: 1.76em;
+  margin-top: 19.3em; }
+
+#scratch-zone-bonus {
+  width: 24em;
+  height: 10.39em;
+  margin-left: 0.2em;
+  margin-top: 0.6em; }
+
+/* Restyling the scratch-all button */
+.scratchAllButtonContainer {
+  top: 43.5em; }
+
+.Desktop .scratchZonesWrapper {
+  width: 100%;
+  margin: 3em auto;
+  font-size: 1.36em; }
+
+.Desktop .scratchZonesTitleContainer {
+  width: 100%;
+  height: 3.5em;
+  position: absolute;
+  top: 3em; }
+
+.Desktop .scratchZonesTitle {
+  background-size: 22em 15.2em;
+  width: 22em;
+  height: 3.5em;
+  margin: -1.1em auto; }
+
+.Desktop .scratchZonesContainer {
+  margin: 0 auto;
+  width: 39.2em;
+  height: 24.3em; }
+
+.Desktop .scratchZoneBasicContainer {
+  position: absolute;
+  background-size: 50.9em 24.3em;
+  width: 39.2em;
+  height: 24.3em; }
+
+.Desktop #scratch-zone-basic {
+  width: 27em;
+  height: 20em;
+  margin-left: 2.1em;
+  margin-top: 1.9em; }
+
+.Desktop .scratchZoneBonusContainer {
+  position: absolute;
+  background-size: 50.9em 24.3em;
+  background-position-x: -39.7em;
+  background-position-y: 0;
+  width: 11.2em;
+  height: 24.3em;
+  margin-left: 27.3em;
+  margin-top: 0.8em; }
+
+.Desktop #scratch-zone-bonus {
+  width: 6.5em;
+  height: 19.1em;
+  margin-top: 1.5em;
+  margin-left: 2.3em; }
+
+/* Restyling the scratch-all button */
+.Desktop .scratchAllButtonWrapper {
+  left: 18.5em; }
+
+.Desktop .scratchAllButtonContainer {
+  top: 34.3em; }
+
+/** ============================================================== **/
+/** Default Popup classes                                          **/
+/** ============================================================== **/
+/* update popup image size */
+.popupDefault {
+  width: 31.3em;
+  height: 31.3em;
+  margin-left: -15.65em;
+  margin-top: -15.65em;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 31.3em 31.3em;
+  box-shadow: none; }
+
+/* Styling on popup fonts, remove if not needed*/
+.popupDefault .popupDefaultFont {
+  letter-spacing: -0.01em;
+  line-height: 1em;
+  font-size: 200%; }
+
+.popupDefault .popupTitleDefault,
+.popupDefault .popupTextDefault {
+  font-family: "FuturaBoldCondensedBT";
+  padding: 0;
+  margin: 0; }
+
+.popupDefault .popupTitleDefault {
+  position: absolute;
+  font-size: 5em;
+  font-weight: normal;
+  line-height: 1em;
+  text-align: center;
+  top: 20%;
+  width: 100%;
+  text-shadow: 0.05em 0.05em 0 #000000, 0 0.05em 0 #000000, -0.05em 0.05em 0 #000000, 0.05em -0.05em 0 #000000, 0 -0.05em 0 #000000, -0.05em -0.05em 0 #000000, -0.05em 0 0 #000000, 0.05em 0 0 #000000; }
+
+.popupDefault .popupTextDefault {
+  position: absolute;
+  letter-spacing: -0.01em;
+  line-height: 1.25em;
+  font-size: 300%;
+  font-weight: normal;
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+  color: #ffffff;
+  text-shadow: 0.05em 0.05em 0 #000000, 0 0.05em 0 #000000, -0.05em 0.05em 0 #000000, 0.05em -0.05em 0 #000000, 0 -0.05em 0 #000000, -0.05em -0.05em 0 #000000, -0.05em 0 0 #000000, 0.05em 0 0 #000000; }
+
+.popupDefault .popupContentDefault {
+  width: 100%;
+  height: 100%;
+  top: 40%;
+  display: table;
+  text-align: center; }
+
+/* Win Popup styling*/
+.popupDefault .popupTextDefault.popupWinAmountText {
+  color: #54cffc;
+  font-size: 5em;
+  margin-top: 0.8em;
+  text-shadow: 0.05em 0.05em 0 #000000, 0 0.05em 0 #000000, -0.05em 0.05em 0 #000000, 0.05em -0.05em 0 #000000, 0 -0.05em 0 #000000, -0.05em -0.05em 0 #000000, -0.05em 0 0 #000000, 0.05em 0 0 #000000; }
+
+.Chrome .popupDefault .popupTitleDefault,
+.Safari .popupDefault .popupTitleDefault,
+.Chrome .popupDefault .popupTextDefault,
+.Safari .popupDefault .popupTextDefault,
+.Chrome .popupDefault .popupTextDefault.popupWinAmountText
+.Safari .popupDefault .popupTextDefault.popupWinAmountText {
+  text-shadow: none; }
+
+.Chrome .popupDefault .popupTitleDefault.outline,
+.Safari .popupDefault .popupTitleDefault.outline,
+.Chrome .popupDefault .popupTextDefault.outline,
+.Safari .popupDefault .popupTextDefault.outline,
+.Chrome .popupDefault .popupTextDefault.popupWinAmountText.outline
+.Safari .popupDefault .popupTextDefault.popupWinAmountText.outline {
+  -webkit-text-stroke: 3.5pt #000000; }
+
+#nowin-popup-content-container {
+  left: 50%; }
+
+#nowin-popup-text-container-fill,
+#nowin-popup-text-container-outline {
+  width: 5em;
+  margin-left: -2.9em; }
+
+.winPopupCoinShower {
+  z-index: -1;
+  width: 28.6em;
+  height: 15.5em;
+  background-size: 672em 15.5em;
+  border-radius: 2.5em 2.5em 19em 21em; }
+
+.winPopupCoinShowerContainer {
+  top: 14.4em;
+  left: 1.05em;
+  width: 28.6em;
+  height: 15.5em; }
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                        Toolbar and Buttons                                                  **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+/* Remove the Skin-2 and Skin-3 if there is only 1 skin */
+.selectedItemContainer {
+  background: -webkit-linear-gradient(left, white 55%, #00b38f 55%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(55%, white), color-stop(55%, white), color-stop(56%, white), color-stop(56%, #00b38f));
+  background: -moz-linear-gradient(left, white 55%, #00b38f 55%);
+  background: -ms-linear-gradient(left, white 55%, #00b38f 55%);
+  background: -o-linear-gradient(left, white 55%, #00b38f 55%);
+  background: linear-gradient(to right, white 55%, #00b38f 55%); }
+
+.selectedItemContainer:hover {
+  background: -webkit-linear-gradient(left, white 55%, #33e1be 55%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(55%, white), color-stop(55%, white), color-stop(56%, white), color-stop(56%, #33e1be));
+  background: -moz-linear-gradient(left, white 55%, #33e1be 55%);
+  background: -ms-linear-gradient(left, white 55%, #33e1be 55%);
+  background: -o-linear-gradient(left, white 55%, #33e1be 55%);
+  background: linear-gradient(to right, white 55%, #33e1be 55%); }
+
+/*
+.Skin-2 .selectedItemContainer {
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #ee352a 55%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(55%, rgba(255, 255, 255, 1)), color-stop(55%, rgba(255, 255, 255, 1)), color-stop(56%, rgba(255, 255, 255, 1)), color-stop(56%,#ee352a));
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #ee352a 55%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #ee352a 55%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #ee352a 55%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 55%, #ee352a 55%);
+}
+
+.Skin-2 .selectedItemContainer:hover {
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #f76430 55%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(55%, rgba(255, 255, 255, 1)), color-stop(55%, rgba(255, 255, 255, 1)), color-stop(56%, rgba(255, 255, 255, 1)), color-stop(56%, #f76430));
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #f76430 55%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #f76430 55%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #f76430 55%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 55%, #f76430 55%);
+}
+
+.Skin-3 .selectedItemContainer {
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #a13295 55%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(55%, rgba(255, 255, 255, 1)), color-stop(55%, rgba(255, 255, 255, 1)), color-stop(56%, rgba(255, 255, 255, 1)), color-stop(56%,#a13295));
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #a13295 55%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #a13295 55%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #a13295 55%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 55%, #a13295 55%);
+}
+
+.Skin-3 .selectedItemContainer:hover {
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #c54cb8 55%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(55%, rgba(255, 255, 255, 1)), color-stop(55%, rgba(255, 255, 255, 1)), color-stop(56%, rgba(255, 255, 255, 1)), color-stop(56%, #c54cb8));
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #c54cb8 55%);
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #c54cb8 55%);
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 55%, #c54cb8 55%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 55%, #c54cb8 55%);
+}*/
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                      PORTRAIT                                                **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+/* Readjusting positioning for portrait mode */
+@media screen and (orientation: portrait) {
+  .purchaseLogo,
+  .selectionLogo {
+    margin: 0 auto -1.5em; }
+
+  .purchaseLogo {
+    margin-top: 3em; } }
+
+/*# sourceMappingURL=layout.css.map */

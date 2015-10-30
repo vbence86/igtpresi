@@ -1,0 +1,1415 @@
+
+/** 
+ * Original it was located in jqt/styles/theme_css.php, but all the other games stopped applying this
+ * Scratchomatic loaded in desktop browsers, however, still needs it.
+ */
+
+html,body, body > div {
+    height: 100%;
+}
+
+#game-universe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    min-height: 100%;
+    display: inline-block;
+    overflow: hidden; 
+    background-color: #000;
+    font-size: 10px;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: "FuturaBoldCondensedBT";
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    -ms-touch-action: none;
+}
+
+#game {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* common game sprites */
+.game-sprite-all {
+    background-size: 20.8em 5.7em;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+#game-menu-container .game-sprite {
+	background-size: 20.8em 5.7em;
+}
+
+#game-menu-container {
+    position: absolute;
+    top: 0;
+	width: 100%;
+    z-index: 100;
+}
+
+#game-menu-container > div:not(:first-child) {
+	float:right;
+}
+
+#game-menu-container > div:first-child {
+	float:left;
+}
+
+#game-menu-container:before, #game-menu-container:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.main-game-bar{
+    position: absolute;
+    right: 0.5em;
+    z-index: 30;
+    color: white;
+    margin: 0.5em -0.1em 0.5em 1em;
+}
+
+.Info .main-game-bar,
+.symbolPage .main-game-bar {
+    display: none;
+}
+
+.Info .secondary-game-bar,
+.symbolPage .secondary-game-bar {
+    display: none;
+}
+
+.main-game-bar > div {
+    display : inline-block;
+    vertical-align: middle;
+	margin-right: 0.1em;
+}
+
+.main-game-bar > div:first-child {
+	width: 6.5em;
+	height: 3em;
+}
+
+.main-game-bar > .balance-info {
+    height: 100%;
+    font-size: 1.2em;
+    font-family: "FuturaBoldCondensedBT";
+}
+
+.secondary-game-bar {
+    position: absolute;
+    top: 3.5em;
+    right: 0.75em;
+    z-index: 30;
+    margin: 0.5em 0 0.5em 1em;
+}
+
+.scene {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+    z-index: 0;
+}
+
+.scene,
+.popupDefault,
+.sceneFader {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+	   -moz-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+	     -o-transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+            transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+
+}
+.scene.shown,
+.popupDefault.shown,
+.sceneFader.shown {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition-delay: 0s;
+	   -moz-transition-delay: 0s;
+	     -o-transition-delay: 0s;
+            transition-delay: 0s;
+}
+.scene.shown { z-index: 20; }
+.hideBehindFader {
+    z-index: 19;
+}
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                             BUTTON                                                **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** Generics **/
+.buttonDefault {
+    width: 9em;
+    height: 3.5em;
+    line-height: 3.5em;
+    background-color: rgb(113, 182, 39);
+    margin: 0 auto;
+    border: 0.25em solid white;
+    border-radius: 3.5em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 0.25em 0 rgba(0, 0, 0, 0.5);
+}
+
+
+/** Need to set font in here unless you want BIG buttons **/
+.buttonDefault p, .buttonDefault span {
+    font-size: 250%;
+    font-family: FuturaBoldCondensedBT;
+}
+
+.buttonDefault.pressed{
+    -webkit-animation: background-blink 0.5s 0s infinite linear forwards;
+    -moz-animation: background-blink 0.5s 0s infinite linear forwards;
+    animation: background-blink 0.5s 0s infinite linear forwards;
+}
+
+.buttonDefault.disabled { 
+    opacity: 0.5; 
+    cursor: auto; 
+}
+
+/** Container Elements **/
+/** - Portrait is default                               **/
+/** --------------------------------------------------- **/
+
+#logo {
+    margin: 0.5em 0 0.5em 1em;
+    width: 12.1em;
+    height: 3.2em;
+    background-position: 0 0;
+    -webkit-animation: expandMiddleBounce 0.5s 1.15s 1 cubic-bezier(.33, .08, .84, .09) both;
+    -webkit-animation: slideLeftBounce 0.75s 0.25s 1 cubic-bezier(.33, .08, .84, .09) both;
+       -moz-animation: slideLeftBounce 0.75s 0.25s 1 cubic-bezier(.33, .08, .84, .09) both;
+       -moz-animation: expandMiddleBounce 0.5s 1.15s 1 cubic-bezier(.33, .08, .84, .09) both;
+            animation: expandMiddleBounce 0.5s 1.15s 1 cubic-bezier(.33, .08, .84, .09) both;
+            animation: slideLeftBounce 0.75s 0.25s 1 cubic-bezier(.33, .08, .84, .09) both;
+}
+
+#title-container {
+    width: 100%;
+    text-align: center;
+}
+
+#title {
+    width: 26.3em;
+    height: 6.4em;
+    background-position: 0 -3.4em;
+    margin: 0 auto;
+}
+
+#sound-button {
+    width: 2.15em;
+    height: 2.3em;
+    background-position: -15.7em -2.6em;
+    display: inline-block;
+}
+
+#sound-button.soundOff {
+    background-position: -17.9em -2.6em;
+}
+
+#sound-button.hidden {
+    display: none;
+}
+
+#help-button {
+    width: 2.5em;
+    height: 2.5em;
+    display: inline-block;
+}
+
+.help-button-wrapper{
+    width: 4em;
+    height: 4em;
+    top: -0.8em;
+    right: -0.8em;
+    position: absolute;
+}
+
+#help-button {
+    background-position: -12.7em -0.2em;
+}
+
+.Info #help-button{
+    display: none;
+    visibility: hidden;
+}
+.Info #game-universe{
+    overflow-y: visible;
+}
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                               PURCHASE AND SELECTION SCENE                                                **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** custom version of the flax-logo that has a thick shadow to make the outline of text more visible **/
+.flaxLogoShadowed,
+.selectionFlaxLogo {
+    background-size: 12.2em 3.4em;
+}
+
+#purchase-scene,
+#selection-scene {
+	display: table;
+}
+
+#purchase-themes-container {
+	display: table-row;
+	text-align: center;
+	vertical-align: middle;
+	height: 100%;
+}
+
+#purchase-themes-container .wrapper {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#purchase-themes {
+    width: 14.6em;
+    height: 24.9em;
+	display: inline-block;
+	position: relative;
+    margin-top: 5em;
+}
+
+.purchase-card {
+	position: absolute;
+    width: 16em;
+    height: 23.1em;
+    background-size: 16em 23.1em;
+	background-repeat: no-repeat;
+	-webkit-transition: all 0.5s;
+	   -moz-transition: all 0.5s;
+         -o-transition: all 0.5s;
+	        transition: all 0.5s;
+    border-radius: 0.7em;
+	/*box-shadow: 0.05em 0.05em 0.3em rgba(0, 0, 0, 0.5);*/
+}
+
+.OldSelectionFlow .purchase-card:hover {
+    cursor: pointer;
+}
+
+.purchase-card.purchase-card.selected {
+    box-shadow: 0 0 2.5em white;
+    z-index: 4;
+}
+
+.purchase-card.skin-1 {
+    left: -50%;
+    top: 0;
+    z-index: 1;
+    -webkit-transform: rotate(-20deg);
+	   -moz-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+	     -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+}
+
+.purchase-card.skin-1.selected {
+    -webkit-transform: translate(-1em, 1em) rotate(-10deg) scale(1.15);
+	   -moz-transform: translate(-1em, 1em) rotate(-10deg) scale(1.15);
+        -ms-transform: translate(-1em, 1em) rotate(-10deg) scale(1.15);
+	     -o-transform: translate(-1em, 1em) rotate(-10deg) scale(1.15);
+            transform: translate(-1em, 1em) rotate(-10deg) scale(1.15);    
+}
+.purchase-card.skin-1.unselected {
+    z-index: 1;
+}
+
+.purchase-card.skin-2 {
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.purchase-card.skin-2.selected { 
+    -webkit-transform: scale(1.15);
+	   -moz-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+	     -o-transform: scale(1.15);
+            transform: scale(1.15);
+}
+
+.purchase-card.skin-3 {
+    left: 50%;
+    top: 0;
+    z-index: 3;
+    -webkit-transform: rotate(20deg);
+	   -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+	     -o-transform: rotate(20deg);
+            transform: rotate(20deg);
+}
+
+.purchase-card.skin-3.selected { 
+    -webkit-transform: translate(1em, 1em) rotate(10deg) scale(1.15);
+	   -moz-transform: translate(1em, 1em) rotate(10deg) scale(1.15);
+        -ms-transform: translate(1em, 1em) rotate(10deg) scale(1.15);
+	     -o-transform: translate(1em, 1em) rotate(10deg) scale(1.15);
+            transform: translate(1em, 1em) rotate(10deg) scale(1.15);
+}
+
+.purchaseLogo {
+   display: none;
+}
+
+#purchase-logo-container {
+    visibility: hidden;
+    display: none;
+}
+
+/** Fine-tuning the purchase scene **/
+.selectionFlaxLogo {
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    width: 12.1em;
+    height: 3.2em;
+    background-position: 0 0;
+    display: inline-block;
+}
+
+#purchase-button-container {
+    height: 8.5em;
+    width: 100%;
+    z-index: 20;
+    position: absolute;
+    bottom: 0;
+    display: table-row;
+}
+
+#purchase-ticket-price{
+    white-space: pre;
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 2.5em;
+    background-color: rgb(113, 182, 39);
+    background-color: rgba(113, 182, 39, 0.9);
+    top: 20em;
+    left: -6em;
+    position:absolute;
+    z-index: 10;
+    border: 2px solid white;
+    display: table;
+}
+
+#purchase-ticket-price P{
+    color: white;
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+#selection-themes-container {
+    display: table-row;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+}
+
+#selection-themes-container .wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#selection-themes {
+    width: 19.14em;
+    height: 14.04em;
+    display: inline-block;
+    position: relative;
+}
+
+#selection-title-text {
+    margin-bottom: 1.5em;
+    font-family: "FuturaBoldCondensedBT";
+    font-size: 2em;
+}
+
+.selection-card {
+    position: absolute;
+    width: 19.14em;
+    height: 14.04em;
+    background-size: 19.14em 14.04em;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.5s;
+       -moz-transition: all 0.5s;
+         -o-transition: all 0.5s;
+            transition: all 0.5s;
+    box-shadow: 0.05em 0.05em 0.3em rgba(0, 0, 0, 0.25);
+    border-radius: 0.6em;
+}
+
+.selectionCardContainer {
+    position: relative;
+    -webkit-transition: all 0.5s;
+       -moz-transition: all 0.5s;
+         -o-transition: all 0.5s;
+            transition: all 0.5s;
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    z-index: 1;           
+}
+
+
+.selection-card.skin-1 {
+    left: -50%;
+    top: 2em;
+    -webkit-transform: rotate(-20deg);
+       -moz-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+         -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+}
+
+.selection-card.skin-2 {
+    left: 0;
+    top: 0;
+}
+
+.selection-card.skin-3 {
+    left: 50%;
+
+    top: 2em;
+    -webkit-transform: rotate(20deg);
+       -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+         -o-transform: rotate(20deg);
+            transform: rotate(20deg);
+}
+
+/** selected versions of the cards **/
+.selectionCardContainer.selected .selection-card.skin-1 {
+    -webkit-transform: translate(-1em, 1em) rotate(-10deg) scale(1.25);
+       -moz-transform: translate(-1em, 1em) rotate(-10deg) scale(1.25);
+        -ms-transform: translate(-1em, 1em) rotate(-10deg) scale(1.25);
+         -o-transform: translate(-1em, 1em) rotate(-10deg) scale(1.25);
+            transform: translate(-1em, 1em) rotate(-10deg) scale(1.25);    
+}
+
+.selectionCardContainer.selected .selection-card.skin-2 { 
+    -webkit-transform: scale(1.25);
+       -moz-transform: scale(1.25);
+        -ms-transform: scale(1.25);
+         -o-transform: scale(1.25);
+            transform: scale(1.25);
+}
+
+.selectionCardContainer.selected .selection-card.skin-3 { 
+    -webkit-transform: translate(1em, 1em) rotate(10deg) scale(1.25);
+       -moz-transform: translate(1em, 1em) rotate(10deg) scale(1.25);
+        -ms-transform: translate(1em, 1em) rotate(10deg) scale(1.25);
+         -o-transform: translate(1em, 1em) rotate(10deg) scale(1.25);
+            transform: translate(1em, 1em) rotate(10deg) scale(1.25);
+}
+
+#selection-scene:not(.selectionFinished) .selectionCardContainer:not(.selected):hover {
+    cursor: pointer;
+    -webkit-transform: translate3d(0, -2em, 0);
+       -moz-transform: translate3d(0, -2em, 0);
+        -ms-transform: translate3d(0, -2em, 0);
+         -o-transform: translate3d(0, -2em, 0);
+            transform: translate3d(0, -2em, 0);    
+}
+
+.selectionCardContainer.selected {
+    box-shadow: 0 0 2.5em white;
+    z-index: 2;
+}
+
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                                 GAME SCENE                                                  **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+
+#game-scene div {
+    -webkit-animation-play-state: inherit;
+	   -moz-animation-play-state: inherit;
+            animation-play-state: inherit;
+}
+
+
+.game-scene .hide{
+    display: none;
+    visibility: hidden;
+}
+
+
+/** Finishing all animations exluding the CoinShower **/
+.NoIntroAnimations #game-scene div:not(.AlwaysAnimating) {
+     -webkit-animation-delay: .0s;
+     -moz-animation-delay: .0s;
+     animation-delay: .0s;
+
+     -webkit-animation-duration: .01s;
+     -moz-animation-duration: .01s;
+     animation-duration: .01s;
+ }
+
+/** --------------------------------------------------- **/
+/** Game Scene element positions and animation settings **/
+/** - Portrait is default                               **/
+/** --------------------------------------------------- **/
+
+/** Postponing the animations until entering to the appropriate game state **/
+body:not(.gameStarted) #game-scene {
+    -webkit-animation-play-state: paused;
+	   -moz-animation-play-state: paused;
+            animation-play-state: paused;
+}
+
+/** Reseting the animation in order to replay it when entering the intro state again **/
+.Purchase #game-scene div{
+    -webkit-animation: none;
+	   -moz-animation: none;
+            animation: none;
+}
+
+#scratch-scene-container {
+    width: 100%;
+    text-align: center;
+}
+
+
+
+#particles-container {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.scratchAllButtonWrapper.Idle {
+    -webkit-animation: wobble 1s 0s 2;
+    -moz-animation: wobble 1s 0s 2;
+    animation: wobble 1s 0s 2;
+}
+
+/* This code causing the skrapt alt button appear higher in pengedryss, might need to be removed in scratchomatic*/
+#scratch-all-button {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0.5em;*/
+    /*bottom: 2.4em;*/
+    margin: auto;
+    z-index: 101;
+}
+
+.scratchAllButtonContainer {
+    position: absolute;
+    bottom: 2em;
+    width: 100%;
+    height: 2.8em;
+    text-align: center;
+    z-index: 101;
+}
+
+#scratch-all-button p {
+    font-size: 175%;
+}
+
+/** Reseting the animation in order to replay it when entering the intro state again **/
+.GameFinished div {
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+}
+
+
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                 GAME SCENE TOOL BAR                                               **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+
+
+.Desktop .CustomCursor {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.9em; 
+    height: 2em; 
+    background-repeat: no-repeat;
+    background-position: 0 -3.3em;
+    z-index: 1000;
+}
+.Desktop .CustomCursor.shown { display: block; }
+
+.Desktop.gameStarted #tool-button { display: block; }
+
+.selectButtonDefault {
+    height: 2.85em;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.selectButtonDefault.disabled { 
+    opacity: 0.5;
+    cursor: auto;
+}
+
+#tool-button {
+    display: none;
+    position: absolute;
+    width: 6em;
+    height: 3em;
+}
+#tool-button.opened {
+    height: auto;
+}
+#tool-button-box {
+    border: 0.25em solid white;
+    border-radius: 0.75em;
+}
+#tool-button-box.opened {
+    border-bottom: none;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#tool-button-items {
+    border: none;
+    visibility: hidden;
+}
+#tool-button-items.opened {
+    border-bottom: 0.25em solid white;
+    border-left: 0.25em solid white;
+    border-right: 0.25em solid white;
+    border-bottom-right-radius: 0.75em;
+    border-bottom-left-radius: 0.75em;
+    visibility: visible;
+}
+#tool-button-items > div:last-of-type {
+    border-bottom-left-radius: 0.75em;
+    border-bottom-right-radius: 0.75em;
+}
+
+.selectedItemContainer {
+    position: relative;
+    min-width: 4.9em;
+    height: 2.5em;
+
+    background: rgb(255,255,255); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: -webkit-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(113,182,39,1) 56%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(55%,rgba(255,255,255,1)), color-stop(55%,rgba(255,255,255,1)), color-stop(56%,rgba(255,255,255,1)), color-stop(56%,rgba(113,182,39,1)));/* Chrome,Safari4+ */
+	background: -moz-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(113,182,39,1) 56%);
+	background: -ms-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(113,182,39,1) 56%);
+	background: -o-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(113,182,39,1) 56%);
+    background: linear-gradient(to right,  rgba(255,255,255,1) 55%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 56%,rgba(113,182,39,1) 56%); /* W3C */
+}
+.selectedItemContainer:active {
+    background: rgb(255,255,255); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: -webkit-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(93, 162, 19,1) 56%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(55%,rgba(255,255,255,1)), color-stop(55%,rgba(255,255,255,1)), color-stop(56%,rgba(255,255,255,1)), color-stop(56%,rgba(93, 162, 19,1)));/* Chrome,Safari4+ */
+	background: -moz-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(93, 162, 19,1) 56%);
+	background: -ms-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(93, 162, 19,1) 56%);
+	background: -o-linear-gradient(left, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 55%, rgba(255,255,255,1) 56%, rgba(93, 162, 19,1) 56%);
+    background: linear-gradient(to right,  rgba(255,255,255,1) 55%,rgba(255,255,255,1) 55%,rgba(255,255,255,1) 56%,rgba(93, 162, 19,1) 56%); /* W3C */
+}
+
+.tool-label:before {
+    width: 1em;
+    height: 1em;
+    content: '';
+    background: inherit;
+    background-position: -7em -3.2em;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0.7em;
+    top: 0.9em;
+}
+
+.icon:before {
+    position: absolute;
+    content: '';    
+    background: inherit;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+.icon[data-value="1"]:before { left: 0.6em; top: 0.3em; width: 1.9em; height: 2em; background-position: 0 -3.3em; }
+.icon[data-value="2"]:before { left: 0.4em; top: 0.2em; width: 2.3em; height: 2.1em; background-position: -4.6em -3.3em; }
+.icon[data-value="3"]:before { left: 0.3em; top: 0.1em; width: 2.5em; height: 2.4em; background-position: -2em -3.3em; }
+
+.selectableItemsContainer > div {
+    position: relative;
+    min-height: 3em;
+    background-position: -50em;
+    background-color: rgb(50, 50, 50);
+    background-color: rgba(50, 50, 50, 0.3);
+}
+
+.selectableItemsContainer > div:hover { background-color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.75); }
+.selectableItemsContainer > div:active { background-color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.75); }
+
+
+
+/** --------------------------------------------------------------------------------------------------------------- **/
+/** ---                                               POPUP                                              **/
+/** --------------------------------------------------------------------------------------------------------------- **/
+
+/** preventing the popup from fading out twice **/
+.popupDefault.simpleFadeOut:not(.shown) { 
+    -webkit-transition: none;
+       -moz-transition: none;
+         -o-transition: none;
+            transition: none;    
+    visibility: hidden; 
+}
+
+.popupDefault.delay3s {
+    -webkit-transition-delay: 3s;
+       -moz-transition-delay: 3s;
+         -o-transition-delay: 3s;
+            transition-delay: 3s;
+}
+
+/* is Adding display to none for the issue on Safari Browser which show popup for a second after fading out */
+.popupDefault {
+    display: none;
+}
+
+.popupDefault.shown {
+    display: block;
+}
+
+.popupDefault {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 26em;
+    height: 24em;
+    margin-left: -13em;
+    margin-top: -13em;
+
+    background: #7dbe30; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: -webkit-linear-gradient(top, #7dbe30 0%, #266d24 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7dbe30), color-stop(100%,#266d24));/* Chrome,Safari4+ */
+	background: -moz-linear-gradient(top, #7dbe30 0%, #266d24 100%);
+	background: -ms-linear-gradient(top, #7dbe30 0%, #266d24 100%);
+	background: -o-linear-gradient(top, #7dbe30 0%, #266d24 100%);
+    background: linear-gradient(to bottom,  #7dbe30 0%,#266d24 100%); /* W3C */
+
+    font-family: DOMCasualDOTRegular;
+    border: 0.5em solid rgb(216, 251, 165);
+    border-radius: 2em;
+    z-index: 1000;
+}
+
+.popupDefault .popupContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.popupDefault .popupDefaultFont {
+    letter-spacing: -0.01em;
+    line-height: 1em;
+    font-size: 200%;
+    color: rgb(74, 96, 10);
+    text-shadow:    0 0 0.25em rgb(214, 250, 159)
+}
+
+.popupDefault .popupButtonContainerDefault {
+    position: absolute;
+    bottom: 1em;
+    width: 100%;
+    z-index: 1000;
+}
+
+.popupDefault .popupTitleDefault {
+    padding: 0.75em;
+    color: white;
+    font-size: 4em;
+    font-family: "TypejockeysSauberScript";
+    font-weight: normal;
+    line-height: 1em;
+    text-align: center;
+    text-shadow:    0 0 0 rgb(79, 112, 23),
+                    0 -0.05em 0 rgb(79, 112, 23),
+                    0 0.05em 0 rgb(79, 112, 23),
+                    0.05em 0 0 rgb(79, 112, 23),
+                    0.05em 0.05em 0 rgb(79, 112, 23),
+                    0.05em -0.05em 0 rgb(79, 112, 23),
+                    -0.05em 0.05em 0 rgb(79, 112, 23),
+                    -0.05em -0.05em 0 rgb(79, 112, 23),
+                    -0.05em 0 0 rgb(79, 112, 23);
+}
+
+.popupDefault .popupContentDefault {
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    z-index: 1;
+}
+
+.popupDefault .popupTextDefault {
+    letter-spacing: -0.01em;
+    line-height: 1em;
+    font-size: 250%;
+    text-align: center;
+    text-shadow:    0 0 0 rgb(214, 250, 159),
+                    0 -0.1em 0 rgb(214, 250, 159),
+                    0 0.1em 0 rgb(214, 250, 159),
+                    0.1em 0 0 rgb(214, 250, 159),
+                    0.1em 0.1em 0 rgb(214, 250, 159),
+                    0.1em -0.1em 0 rgb(214, 250, 159),
+                    -0.1em 0.1em 0 rgb(214, 250, 159),
+                    -0.1em -0.1em 0 rgb(214, 250, 159),
+                    -0.1em 0 0 rgb(214, 250, 159),
+                    0 0.2em 0 rgb(61, 119, 35);
+}
+
+.sceneFader {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    z-index: 102;
+}
+
+/** ============================================================== **/
+/** Specific Popup classes                                          **/
+/** ============================================================== **/
+
+/** Win Popup **/
+#win-popup-title-container {
+    padding: 0.5em 0.5em 0.1em;
+}
+
+#win-popup-content-container {
+    padding: 0.5em;
+}
+
+#win-popup-wintable-container {
+    margin-top: 2em;
+}
+
+#win-popup .wintable-row {
+    position: relative;
+    min-height: 3em;
+    margin: 0.25em 4em;
+}
+
+#win-popup .wintable-column { float: left; }
+#win-popup .wintable-column:nth-child(2){ float: right; }
+
+#win-popup .wintable-column {
+    font-family: "GlasgowBold";
+    font-size: 2em;
+    color: rgb(255, 235, 0);
+    text-shadow: 0 0.15em 0 rgb(74, 68, 0); 
+}
+
+#win-popup .wintable-row:last-child .wintable-column {
+    color: white;
+    font-size: 2.3em;
+    font-family: "GlasgowBold";
+    font-weight: bold;
+    text-shadow:    0 0 0 rgb(79, 112, 23),
+                    0 -0.1em 0 rgb(79, 112, 23),
+                    0 0.1em 0 rgb(79, 112, 23),
+                    0.1em 0 0 rgb(79, 112, 23),
+                    0.1em 0.1em 0 rgb(79, 112, 23),
+                    0.1em -0.1em 0 rgb(79, 112, 23),
+                    -0.1em 0.1em 0 rgb(79, 112, 23),
+                    -0.1em -0.1em 0 rgb(79, 112, 23),
+                    -0.1em 0 0 rgb(79, 112, 23);    
+}
+
+#win-popup .wintable-row:last-child .wintable-column:first-child {
+    text-transform: uppercase;
+}
+
+/** Old coin shower container - it should be removed as soon as the new animations have been settled in all the games **/
+.winPopupCoinShower {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32em;
+    height: 18.8em;
+    background-repeat: no-repeat;
+    background-size: 672em 18.8em;
+    z-index: 0;
+
+    -webkit-animation: winPopupCoinShower 2s 0s steps(21) infinite;
+	   -moz-animation: winPopupCoinShower 2s 0s steps(21) infinite;
+            animation: winPopupCoinShower 2s 0s steps(21) infinite;
+}
+
+.winPopupCoinShowerContainer {
+    position: absolute;
+    overflow: hidden;
+}
+
+.popup-sparkles-container {
+    position: absolute;
+    left: 4em;
+    bottom: 2em;
+}
+
+.popup-sparkles-collection {
+    position: relative;
+    width: 17em;
+    height: 17em;
+}
+
+.popup-sparkles-collection .sparkle-animation {
+    position: absolute;
+    width: 8.5em;
+    height: 8.5em;
+    background-repeat: no-repeat;
+    background-size: 42.5em 17.0em;
+    z-index: 9;
+
+    -webkit-animation: winPopupSparkles 0.5s 0s steps(5) infinite;
+	   -moz-animation: winPopupSparkles 0.5s 0s steps(5) infinite;
+            animation: winPopupSparkles 0.5s 0s steps(5) infinite;
+}
+
+.popup-sparkles-collection .sparkle-animation:nth-child(1){ left: 0; bottom: 0; }
+.popup-sparkles-collection .sparkle-animation:nth-child(2){ left: 8.5em; bottom: 0; }
+.popup-sparkles-collection .sparkle-animation:nth-child(3){ left: 0; bottom: 8.5em; }
+.popup-sparkles-collection .sparkle-animation:nth-child(4){ left: 8.5em; bottom: 8.5em; }
+
+.popupDefault:not(.shown) .winPopupCoinShower,
+.popupDefault:not(.shown) .sparkle-animation {
+    -webkit-animation-play-state: paused;
+	   -moz-animation-play-state: paused;
+            animation-play-state: paused;
+}
+
+/** Clover (Bonus) win popup **/
+#bonuswin-popup-title-container {
+    padding: 0.5em 0.5em 0.1em;
+}
+
+#bonuswin-popup-content-container {
+    padding: 0.5em;
+}
+
+
+/** ============================================================== **/
+/**              INFO PAGE                    **/
+/** ============================================================== **/
+
+.info-page{
+    padding-bottom: 20px;
+    font-size: 1em;
+    font-family: "FuturaBoldCondensedBT";
+}
+
+.info-page .item-content{
+    border: 0.15em solid white;
+    border-radius: 0.5em;
+    text-align: center;
+    min-height: 10em;
+    font-size: 1.6em;
+    font-family: "Futura";
+    font-weight: normal;
+}
+
+
+.info-page,
+.info-page > .info-toolbar,
+.info-page .item-title,
+.info-page .payoutTable{
+    display: table;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.info-page .payoutItem{
+    display: table;
+    width: 100%;
+}
+
+.info-page .page-title,
+.info-page .item-title > P,
+.info-page .payoutItem > div{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 50%;
+}
+.info-page .item-title > p.howtoplay-title-text,
+.info-page .item-title > p.paytable-title-text{
+    font-size: 2.5em;
+}
+
+/* === The sizes for the pseduo element are considered at
+half the size so it works with the font-size from its connected element
+Its defined above this as 2.5em */
+.info-page .howtoplay-title-text:before,
+.info-page .paytable-title-text:before{
+    content: "";
+    display: inline-table;
+    width: 1.25em;
+    height: 1.25em;
+    bottom: 0;
+    vertical-align: middle;
+    margin: 0.3em;
+    margin-bottom: 0.5em;
+    background-position: -7.9em 0;
+    background-size: 10.4em 2.85em;
+    border-radius: 0.2em;
+}
+.info-page .howtoplay-title-text:before{
+    background-position: -9.15em 0;
+}
+.info-page .paytable-title-text:before{
+    background-position: -7.9em 0;
+}
+.info-page > .info-toolbar{
+    height: 4em;
+}
+.info-page .page-title{
+    font-size: 2em;
+    text-transform: uppercase;
+}
+.paytable-title-text:before{
+    background-position: -157px 0;
+}
+.howtoplay-title-text:before{
+    background-position: -183px 0;
+}
+
+.item-content{
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.item-title{
+    height: 4em;
+
+}
+
+/* === Added this to create the separation line for the columns based on the design === */
+.payoutTable{
+    border-spacing: 2px 0;
+}
+
+.payoutTable .payoutItem > div{
+    padding: 0.5em;
+}
+/* === Rounded corners for the Payout table === */
+.info-page .payoutItem:first-child{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 4px;
+}
+
+.info-page .payoutItem:last-child{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+.info-page > .close-button{
+    position: absolute;
+    width: 2.1em;
+    height: 2.1em;
+    top: 1em;
+    right: 1em;
+    background-size: 20.8em 5.7em;
+    background-position: -8em -3.3em;
+    border-radius: 2em;
+    background-color: white;
+}
+.info-close-wrapper{
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    top: -0.8em;
+    right: -0.8em;
+}
+.info-content{
+    max-width: 48em;
+    margin: auto;
+    min-width: 32em;
+}
+
+.mathsinfo {
+    margin-top: 0.5em;
+    font-size: 1.6em;    
+    text-align: center;
+}
+
+.symbol:before {
+    content: "";
+    display: inline-table;
+    vertical-align: middle;
+}
+
+/**====== THEMES   **/
+.info-page P,
+.info-pageSPAN{
+    width: 100%;
+}
+.howtoplay > .item-content{
+    padding: 10px 5px;
+    text-align: left;
+}
+
+.howtoplay > .item-content H1{
+    font-family: "FuturaBoldCondensedBT";
+    margin:  5px 0;
+    font-size: 1.5em;
+}
+
+.info-page .payoutTable .payoutItem:last-child { border-bottom: none; }
+.info-page > .info-toolbar{
+    color: white;
+    background: black;
+}
+
+
+#systemAlerts{
+    background: black;
+    background: rgba(0,0,0,0.8);
+}
+
+#systemAlerts.show{
+    display:block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* @TODO .slinding class stayes applied on the game container in IE11 and IE10, that should be investigated 
+       instead applying this insenily big z-index value */
+    z-index: 999999;
+}
+
+#systemAlerts > .message{
+    width:  15em;
+    background: white;
+    color: black;
+    font-size: 1.2em;
+    font-family: "FuturaBoldCondensedBT";
+    border-radius: 10px;
+    position: relative;
+    margin: auto;
+    top: 35%;
+}
+
+#systemAlerts > .message > p{
+    padding: 1em;
+    margin: auto;
+    text-align: center;
+}
+
+/** Heartbeating debug icon */
+#heartbeatSymbol {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    z-index: 10000;
+}
+.Heartbeat #heartbeatSymbol {
+    display: block;
+    visibility: visible;
+    -webkit-animation: simpleFadeOut 0.5s 0s linear forwards;
+       -moz-animation: simpleFadeOut 0.5s 0s linear forwards;
+            animation: simpleFadeOut 0.5s 0s linear forwards;    
+}
+
+.priceLabel {
+    display: none;
+    position: absolute;
+    bottom: 0.2em;
+    left: 0.5em;
+    color: white;
+    font-size: 2em;
+    text-shadow:
+    0.1em 0.1em 0 rgb(0, 0, 0),
+    0 0.1em 0 rgb(0, 0, 0),
+    -0.1em 0.1em 0 rgb(0, 0, 0),
+    0.1em -0.1em 0 rgb(0, 0, 0),
+    0 -0.1em 0 rgb(0, 0, 0),
+    -0.1em -0.1em 0 rgb(0, 0, 0),
+    -0.1em 0 0 rgb(0, 0, 0),
+    0.1em 0 0 rgb(0, 0, 0),
+    0 0 1em rgba(0, 0, 0, 0.1);
+}
+
+/** ============================================================== **/
+/** Blue strap for mimicking the NT app in IFrame mode             **/
+/** ============================================================== **/
+.IFrame #game {
+    /*height: -webkit-calc(100% - 4em);*/
+    /*height: -moz-calc(100% - 4em);*/
+    /*height: calc(100% - 4em);*/
+    /*max-height: 94%;*/
+    height: 100%;
+}
+
+.IFrame .bottomStrap {
+    position: relative;
+    width: 100%;
+    height: 4em;
+
+    background: #7db9e8; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+    background: -webkit-linear-gradient(top, #7db9e8 0%, #3a759e 1%, #275b82 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(100%,#3a759e 1%, #275b82));/* Chrome,Safari4+ */
+    background: -moz-linear-gradient(top, #7db9e8 0%, #3a759e 1%, #275b82 100%);
+    background: -ms-linear-gradient(top, #7db9e8 0%, #3a759e 1%, #275b82 100%);
+    background: -o-linear-gradient(top, #7db9e8 0%, #3a759e 1%, #275b82 100%);
+    background: linear-gradient(to bottom,  #7db9e8 0%,#3a759e 1%,#275b82 100%); /* W3C */
+}
+
+.IFrame #purchase-logo-container {
+    visibility: hidden;
+    display: none;
+}
+
+
+/** ============================================================== **/
+/**              BROWSER / DEVICE SPECIFIC fixes                    **/
+/** ============================================================== **/
+
+/** preventing the horizontal scrolling on XPeria Z  **/
+/*@media screen and (-webkit-device-pixel-ratio: 3) and (min-device-width: 1080px){*/
+.SonyXperiaZ #info-scene { overflow-x: hidden; }
+/*}*/
+
+/* moving purchase and scratch all button up slightly for samsung s5 to avoid toolbar in stock browser coming in it's way */
+.SamsungS5 #purchase-button.buttonDefault{
+    margin-bottom: 15em;
+}
+
+/* HACK FOR THE BROWSER IN IE, Where the OK Button is slightly higher */
+body.IE #nowin-popup-okbutton, body.IE #win-popup-okbutton {
+    line-height: 4em;
+}
+
+/*.IE11 .buttonDefault p,*/
+/*.IE11 .buttonDefault span,*/
+/*.windowsChrome .buttonDefault p,*/
+/*.windowsChrome .buttonDefault span{*/
+    /*padding-top: 0.1em;*/
+/*}*/
+
+
+/* HACK FOR THE BROWSER IN IE, FIREFOX, Samsung Chrome Browser Where the OK Button is slightly higher */
+.IE11 .buttonDefault p,
+.IE11 .buttonDefault span,
+.windowsChrome .buttonDefault p,
+.windowsChrome .buttonDefault span
+body.Firefox .buttonDefault p, body.Firefox .buttonDefault span,
+.ChromeAndroid .buttonDefault p, .ChromeAndroid .buttonDefault span{
+    padding-top: 0.1em;
+}
+
+
+.IE11 #game-menu-container,
+.IE11 .slideDownFadeInBounce1_20Delay,
+.IE11 .main-game-bar,
+.IE11 #help-button,
+.IE11 #user-balance{
+    opacity: 1;
+}
+
+
+/*fix for https://jira.probability.co.uk/browse/SCRAT-1511: please see the ticket*/
+.Info #game-scene,
+.Info #purchase-scene,
+.Info #selection-scene {
+    display: none;
+}
+
+/* moving the info-scene on top so the transition looks smoother, SCRAT-1968*/
+#info-scene {
+    z-index: 21;
+}
+
+
+ /** Turning off the iOS7.0.x fix for ScratchCards **/
+html.fix-ios7-applied,
+body.fix-ios7-applied,
+html.fix-ios7-applied.touchmove,
+body.fix-ios7-applied.touchmove {
+    min-height: 321px !important;
+}
+
+@media screen and (orientation: portrait){
+    .selection-card.skin-1 {
+        left: -4em;
+    }
+    .selection-card.skin-3 {
+        left: 4em;
+    }
+    
+    .purchase-card.skin-1 {
+        left: -4em;
+    }
+
+    .purchase-card.skin-3 {
+        left: 4em;
+    }
+
+    #purchase-ticket-price{
+        left: -2em;
+    }
+
+    #purchase-button-container {
+        position: relative;
+    }
+
+     #scratch-all-button {
+        position: relative;
+    }
+
+    .scratchAllButtonContainer {
+        bottom: 4em;
+    }
+
+     /** Turning off the iOS7.0.x fix for ScratchCards **/
+    html.fix-ios7-applied,
+    body.fix-ios7-applied,
+    body.fix-ios7-applied,
+    html.fix-ios7-applied.touchmove,
+    body.fix-ios7-applied.touchmove {
+        min-height: 441px !important;
+    }
+}
+
+
+
+
