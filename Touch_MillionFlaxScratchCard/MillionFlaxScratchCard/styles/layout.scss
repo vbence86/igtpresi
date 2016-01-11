@@ -1,21 +1,102 @@
+@mixin absolutMargin($width, $height, $marginLeft, $marginTop){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $width;
+  height: $height;
+  margin-left: $marginLeft;
+  margin-top: $marginTop;
+}
+
+@mixin transform($valueTransform) {
+  -webkit-transform: $valueTransform;
+  -moz-transform: $valueTransform;
+  -o-transform: $valueTransform;
+  transform: $valueTransform;
+
+}
+
+@mixin transform-origin($valueTransformOrigin) {
+  -webkit-transform-origin: $valueTransformOrigin;
+  -moz-transform-origin: $valueTransformOrigin;
+  -o-transform-origin: $valueTransformOrigin;
+  transform-origin: $valueTransformOrigin;
+}
+
+@mixin animation($valueAnimation){
+  -webkit-animation: $valueAnimation;
+  -moz-animation: $valueAnimation;
+  -o-animation: $valueAnimation;
+  animation: $valueAnimation;
+}
+
+@mixin animation-delay($animation-delay){
+  -webkit-animation-delay: $animation-delay;
+  -moz-animation-delay: $animation-delay;
+  -o-animation-delay: $animation-delay;
+  animation-delay: $animation-delay;
+}
+
+
+@mixin forwards(){
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@mixin goandBack(){
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+/*END - mixins (functions)*/
+
+
+
+
+
 /* background */
+// scss classes and mixins
+$blueText: rgb(90,187,231);
+
+@mixin text-shadow-outline($size, $color) {
+    text-shadow: $size $size $color,
+        0 $size $color,
+        -$size $size $color,
+        (-$size) 0 $color,
+        (-$size) (-$size) $color,
+        0 (-$size) $color,
+        $size (-$size) $color,
+        $size 0 $color;
+}
+
+
+
+// background
 #game,
 .info-page {
+    background: #00405d;
+    background: -webkit-linear-gradient(#00405d, #0092c8 44%, #00405d);
     background: linear-gradient(#00405d, #0092c8 44%, #00405d);
 }
 
 /* Re styling the balace info */
 .main-game-bar .balance-info {
-    color: #00b38f;
+    color: white;
 }
 
 /* Re styling the balace info on game scene, only put these lines if the balance colour are different for each Skin */
-.Skin-2.gameStarted .main-game-bar .balance-info{
-    color: #ee352a;
-}
-.Skin-3.gameStarted .main-game-bar .balance-info{
-    color: #a13295;
-}
+//.Skin-1.gameStarted .main-game-bar .balance-info {
+//    color: #00b38f;
+//}
+//.Skin-2.gameStarted .main-game-bar .balance-info{
+//    color: #ee352a;
+//}
+//.Skin-3.gameStarted .main-game-bar .balance-info{
+//    color: #a13295;
+//}
 
 /* Re styling the button template */
 .buttonDefault {
@@ -24,6 +105,11 @@
     height: 2.5em;
     line-height: 2.5em;
     width: 7em;
+    border: 0.15em solid white;
+}
+
+.buttonDefault p {
+  font-size: 180%;
 }
 
 .buttonDefault:active,
@@ -34,23 +120,54 @@
 
 /* Restyling the purchase scene "buy" button */
 #purchase-button {
-    background-color: #000000;
+    background-color: #00b38f;
+    width: 8em;
+    height: 2.9em;
+    box-shadow: none;
+    border: 0.25em solid white;
+    line-height: 2.9em;
 }
 
 /* Restyling the purchase scene ticket price, also change the font size on the ticket price if needed */
 #purchase-ticket-price {
-    top: 17.5em;
+    top: 14em;
+    left: 0em;
     border: 0.3em solid white;
-    background-color: #00b38f;
+    background-color: black;
 }
 
 #purchase-ticket-price p {
     font-size: 2.35em;
 }
 
+.Desktop #purchase-themes{
+  margin-left: -9em;
+  .purchase-card {
+    width: 24em;
+    height: 17.1em;
+    background-size: 24em;
+    box-shadow: 0.5em 0.5em 0.8em rgba(0,0,0,0.5);
+  }
+
+  .purchase-card.skin-1 {
+    top: 0.5em;
+    left: -60%;
+     @include transform(rotate(-15deg));
+  }
+  .purchase-card.skin-3 {
+    top: 0.5em;
+    left: 60%;
+    @include transform(rotate(15deg));
+  }
+  #purchase-ticket-price{
+    left: -2em;
+  }
+}
+
+
 /* Restyling the selection scene title text */
 #selection-title-text {
-    color: black;
+    color: white;
 }
 
 .selectionLogo {
@@ -60,7 +177,22 @@
     margin: 0 auto 1em;
     background-size: 10em 10em;
     background-repeat: no-repeat;
+    margin-top: -3em;
 }
+
+.selection-card {
+    box-shadow: 0.7em 0.7em 0.7em rgba(0,0,0,0.5);
+}
+
+.Desktop{
+  .selection-card.skin-1{
+    @include transform(rotate(-15deg));
+  }
+  .selection-card.skin-3{
+    @include transform(rotate(15deg));
+  }
+}
+
 
 /* Re styling the info page */
 .info-page .page-title { background-color: #00b38f; }
@@ -69,6 +201,7 @@
     background-color: #ffffff;
     color: #000000;
     font-size: 1.25em;
+    font-family: "FuturaCondensedMedium";
 }
 
 .info-page,
@@ -91,9 +224,25 @@
 .info-page .howtoplay-title-text::before,
 .info-page .paytable-title-text::before { background-color: #00b38f; color: #ffffff }
 .info-page .payoutTable .payoutItem { color: #000000; border: none; }
-.info-page .payoutTable .payoutItem:nth-child(odd) { background-color: #ffffff; }
-.info-page .payoutTable .payoutItem:nth-child(even) { background-color: #0091c7; }
+.info-page .payoutTable .payoutItem:nth-child(odd) { background-color: #0091c7; }
+.info-page .payoutTable .payoutItem:nth-child(even) { background-color: #ffffff; }
 .info-page .payoutTable .payoutItem.title { background-color:#00b38f; color: white; }
+
+.info-page #howToPlayItemTitle,
+.info-page #paytableItemTitle{
+  color: white;
+}
+
+.info-page .payoutItem.title > div:nth-child(1),
+.info-page .prize-name{
+  border-right: 1px solid #ffffff;
+}
+.info-page .page-title, .info-page .item-title > P{
+  text-align: center;
+}
+.info-page .payoutItem > div{
+  text-align: left;
+}
 
 /* for info page symbols, add as needed */
 .info-page .symbol.WildSymbol:before {
@@ -121,8 +270,7 @@
 #selection-scene,
 #game-scene {
     background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 50%;
+    background-position: 50% 50%;
     z-index: 0;
 }
 
@@ -134,16 +282,16 @@
 /* Re adjust the size of the scratchZoneWrapper for the game scene. */
 
 .scratchZonesWrapper {
-    width: 100%;
-    margin: 3em auto;
-    font-size: 1.28em;
+  @include absolutMargin(28em, 34em, -14em, -17em);
+  font-size: 1.2em;
 }
+
 
 .scratchZonesTitleContainer {
     width: 100%;
     height: 3.5em;
     position: absolute;
-    top: 3em;
+    top: 0.1em;
 }
 
 .scratchZonesTitle {
@@ -176,8 +324,8 @@
 .scratchZoneBonusContainer {
     position: absolute;
     background-size: 28em 47.17em;
-    background-position-x: -0.9em;
-    background-position-y: -34.5em;
+    background-position: -0.9em -34.5em;
+
     width: 24.6em;
     height: 12.3em;
     margin-left: 1.76em;
@@ -193,23 +341,14 @@
 
 /* Restyling the scratch-all button */
 .scratchAllButtonContainer {
-    top: 43.5em;
+  @include absolutMargin(100%, 2.8em, -50%, 17em);
 }
 
 //Desktop overrides
 .Desktop .scratchZonesWrapper {
-    width: 100%;
-    margin: 3em auto;
+  @include absolutMargin(39.2em, 24.3em, -19.6em, -11.1em);
     font-size: 1.36em;
 }
-
-.Desktop .scratchZonesTitleContainer {
-    width: 100%;
-    height: 3.5em;
-    position: absolute;
-    top: 3em;
-}
-
 .Desktop .scratchZonesTitle {
     background-size: 22em 15.2em;
     width: 22em;
@@ -240,8 +379,7 @@
 .Desktop .scratchZoneBonusContainer {
     position: absolute;
     background-size: 50.9em 24.3em;
-    background-position-x: -39.7em;
-    background-position-y: 0;
+    background-position: -39.7em 0;
     width: 11.2em;
     height: 24.3em;
     margin-left: 27.3em;
@@ -261,7 +399,8 @@
 }
 
 .Desktop .scratchAllButtonContainer {
-    top: 34.3em;
+  margin-top: 14.5em;
+//    top: 34.3em;
 }
 
 /** ============================================================== **/
@@ -277,6 +416,10 @@
     background-repeat: no-repeat;
     background-size: 31.3em 31.3em;
     box-shadow: none;
+}
+
+.popupDefault .popupButtonContainerDefault {
+    bottom: 6.5em;
 }
 
 /* Styling on popup fonts, remove if not needed*/
@@ -295,82 +438,73 @@
 
 .popupDefault .popupTitleDefault {
     position: absolute;
-    font-size: 5em;
+    font-size: 4.2em;
     font-weight: normal;
     line-height: 1em;
     text-align: center;
-    top: 20%;
+    top: 2.2em;
     width: 100%;
-    text-shadow: 0.05em 0.05em 0 #000000,
-    0 0.05em 0 #000000,
-    -0.05em 0.05em 0 #000000,
-    0.05em -0.05em 0 #000000,
-    0 -0.05em 0 #000000,
-    -0.05em -0.05em 0 #000000,
-    -0.05em 0 0 #000000,
-    0.05em 0 0 #000000;
+    @include text-shadow-outline(0.1em, black);
 }
 
 .popupDefault .popupTextDefault {
     position: absolute;
     letter-spacing: -0.01em;
-    line-height: 1.25em;
-    font-size: 300%;
+    font-size: 2.8em;
     font-weight: normal;
     width: 100%;
     text-align: center;
     z-index: 20;
-    color: #ffffff;
-    text-shadow: 0.05em 0.05em 0 #000000,
-    0 0.05em 0 #000000,
-    -0.05em 0.05em 0 #000000,
-    0.05em -0.05em 0 #000000,
-    0 -0.05em 0 #000000,
-    -0.05em -0.05em 0 #000000,
-    -0.05em 0 0 #000000,
-    0.05em 0 0 #000000;
+    color: $blueText;
+    @include text-shadow-outline(0.1em, black);
 }
+
 
 
 .popupDefault .popupContentDefault {
     width: 100%;
-    height:  100%;
-    top: 40%;
-    display:table;
-    text-align:center;
+//<<<<<<< HEAD big-win
+//    height:  100%;
+//    top: 40%;
+//    display:table;
+//    text-align:center;
+//    padding: 0;
+//=======
+    height: 100%;
+    top: 13.5em;
+    display: table;
+    text-align: center;
+}
+
+#win-popup-content-container {
+    // left: 50%;
+    padding: 0;
+    top: 14em;
 }
 
 /* Win Popup styling*/
 .popupDefault .popupTextDefault.popupWinAmountText {
-    color: #54cffc;
-    font-size: 5em;
-    margin-top: 0.8em;
-    text-shadow: 0.05em 0.05em 0 #000000,
-    0 0.05em 0 #000000,
-    -0.05em 0.05em 0 #000000,
-    0.05em -0.05em 0 #000000,
-    0 -0.05em 0 #000000,
-    -0.05em -0.05em 0 #000000,
-    -0.05em 0 0 #000000,
-    0.05em 0 0 #000000;
+  color: #54cffc;
+  font-size: 5em;
+  top: 0.7em;
+  @include text-shadow-outline(0.05em, #000000);
 }
 
-.Chrome .popupDefault .popupTitleDefault,
-.Safari .popupDefault .popupTitleDefault,
-.Chrome .popupDefault .popupTextDefault,
-.Safari .popupDefault .popupTextDefault,
-.Chrome .popupDefault .popupTextDefault.popupWinAmountText
-.Safari .popupDefault .popupTextDefault.popupWinAmountText {
-    text-shadow: none;
-}
+#win-popup-text-container-fill { color: white; }
 
-.Chrome .popupDefault .popupTitleDefault.outline,
-.Safari .popupDefault .popupTitleDefault.outline,
-.Chrome .popupDefault .popupTextDefault.outline,
-.Safari .popupDefault .popupTextDefault.outline,
-.Chrome .popupDefault .popupTextDefault.popupWinAmountText.outline
-.Safari .popupDefault .popupTextDefault.popupWinAmountText.outline {
-    -webkit-text-stroke: 3.5pt #000000
+/* win popup text */
+body:not(.iPhone):not(.iPad), :not(.Desktop):not(.Safari){
+    &.Chrome .popupDefault {
+    .popupTitleDefault, .popupTextDefault {
+      text-shadow: none;
+    }
+    .popupTitleDefault.outline {
+      -webkit-text-stroke: 11pt #000000;
+    }
+    .popupTextDefault.outline {
+      -webkit-text-stroke: 9pt #000000;
+    }
+  }
 }
 
 #nowin-popup-content-container {
@@ -385,18 +519,184 @@
 
 .winPopupCoinShower {
     z-index: -1;
-    width: 28.6em;
+    width: 26em;
     height: 15.5em;
     background-size: 672em 15.5em;
-    border-radius: 2.5em 2.5em 19em 21em;
+    border-radius: 2.5em 2.5em 35em 35em;
 }
 
 .winPopupCoinShowerContainer {
-    top: 14.4em;
-    left: 1.05em;
+    top: 13em;
+    left: 2.65em;
     width: 28.6em;
     height: 15.5em;
 }
+
+.sunburst {
+  @include absolutMargin(58.75em,58.75em,-29.375em, -29.375em);
+  background-size: 58.75em 58.75em;
+  @include animation(rotation 10s 0s infinite linear forwards);
+  opacity: 0.5;
+}
+
+#bigwin-popup{
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.popupDefault .popupButtonContainerDefault {
+  bottom: 4.5em;
+}
+#bigwin-popup-content-container{
+  padding: 0;
+  top: 14.5em;
+}
+
+#bigwin-popup .popupDefault .popupTextDefault.popupWinAmountText{
+  top: 0.6em;
+}
+
+#bigwin-popup.shown{
+  visibility: visible;
+}
+
+#bigwin-popup-wrapper.popupDefault{
+  background-image: none;
+  visibility: inherit;
+}
+
+#bigwin-popup-wrapper .popupDefault{
+  background-image: none;
+  z-index: 1000;
+
+}
+
+#bigwin-popup-bg{
+  visibility: inherit;
+  @include transform-origin(50% 50%);
+  @include animation(bigwinPopupAnimation 5s 0s infinite linear forwards);
+}
+
+#bigwin-popup-title-container-outline,
+#bigwin-popup-title-container-fill,
+#bigwin-popup-text-container-outline,
+#bigwin-popup-text-container-fill,
+#bigwin-popup-winamount-container-outline,
+#bigwin-popup-winamount-container-fill
+{
+  @include transform-origin(50% 50%);
+  @include animation(bigwinPopupTextAnimation 5s 0s infinite linear forwards);
+}
+
+//#win-popup-winamount-container-fill { top: 0.7em; }
+
+#bigwin-popup-text-container-outline,
+#bigwin-popup-text-container-fill{
+  color: white;
+}
+
+.particles {
+  @include absolutMargin(12.6em,13.3em, -6.3em, -6.65em);
+  background-size: 88.2em 26.6em;
+  opacity: 0;
+  z-index: 1000;
+}
+
+#bigwin-particles-1{
+  margin-left: -15em;
+  margin-top: -15em;
+ @include animation(particlesAnimation 5s 0s infinite steps(1));
+}
+#bigwin-particles-2{
+  margin-left: 15em;
+  margin-top: -18em;
+  @include animation(particlesAnimation 5s 0.8s infinite steps(1));
+}
+
+#bigwin-particles-3{
+  margin-left: 0em;
+  margin-top: -20em;
+  @include animation(particlesAnimation 5s 1s infinite steps(1));
+}
+
+#bigwin-particles-4{
+  margin-left: -25em;
+  margin-top: 1em;
+ @include animation(particlesAnimation 5s 1.3s infinite steps(1));
+}
+#bigwin-particles-5{
+  margin-left: 11em;
+  margin-top: 3em;
+  @include animation(particlesAnimation 5s 2s infinite steps(1));
+}
+
+#bigwin-particles-6{
+  margin-left: 4em;
+  margin-top: 8em;
+  @include animation(particlesAnimation 5s 4.3s infinite steps(1));
+}
+
+#bigwin-particles-7{
+  margin-left: -10em;
+  margin-top: 8em;
+  @include animation(particlesAnimation 5s 3s infinite steps(1));
+}
+
+#bigwin-particles-8{
+  margin-left: 8em;
+  margin-top: 3em;
+  @include animation(particlesAnimation 5s 3.8s infinite steps(1));
+}
+
+#bigwin-particles-9{
+  margin-left: -20em;
+  margin-top: -23em;
+  @include animation(particlesAnimation 5s 3.5s infinite steps(1));
+}
+
+#bigwin-particles-10{
+  margin-left: -17em;
+  margin-top: -20em;
+  @include animation(particlesAnimation 5s 2.2s infinite steps(1));
+}
+
+#bigwin-particles-11{
+  margin-left: -16em;
+  margin-top: -10em;
+  @include animation(particlesAnimation 5s 4.8s infinite steps(1));
+}
+
+
+#bigwin-particles-12{
+  margin-left: 7em;
+  margin-top: -15em;
+  @include animation(particlesAnimation 5s 2.7s infinite steps(1));
+}
+
+
+#bigwin-particles-13{
+  margin-left: -23em;
+  margin-top: -23em;
+  @include animation(particlesAnimation 5s 4.5s infinite steps(1));
+}
+
+
+#bigwin-particles-14{
+  margin-left: 12em;
+  margin-top: 2em;
+  @include animation(particlesAnimation 5s 4.7s infinite steps(1));
+}
+
+#bigwin-particles-15{
+  margin-left: 15em;
+  margin-top: -15em;
+  @include animation(particlesAnimation 5s 4.9s infinite steps(1));
+}
+
+
+
+
 
 /** --------------------------------------------------------------------------------------------------------------- **/
 /** ---                                        Toolbar and Buttons                                                  **/
@@ -464,6 +764,8 @@
 /* Readjusting positioning for portrait mode */
 @media screen and (orientation: portrait)  {
 
+  //Portrait mode for purchase screen.
+
     .purchaseLogo,
     .selectionLogo {
         margin: 0 auto -1.5em;
@@ -471,5 +773,31 @@
     .purchaseLogo{
         margin-top: 3em;
     }
+    #purchase-ticket-price {
+      top: 20em;
+      left: -2em;
+      background-color: #00b38f;
+    }
+
+    .purchase-card.skin-1{
+      @include transform(rotate(-15deg));
+    }
+
+    .purchase-card.skin-3{
+      left: 0;
+      top: -1em;
+      @include transform(rotate(0deg));
+    }
+
+    .purchase-card.skin-2{
+      left: 3em;
+      @include transform(rotate(15deg));
+    }
+
+  #purchase-button{
+    background-color: black;
+    width: 10em;
+  }
+
 
 }
